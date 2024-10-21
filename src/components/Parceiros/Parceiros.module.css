@@ -1,0 +1,27 @@
+
+.autocompleteContainer {
+    margin-top: 70px; 
+    margin-left: 25px;
+  }
+  
+ 
+  .labelContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-left: 15px;
+  }
+
+  .labelContainer label {
+    font-weight: 400;
+    font-size: 23px; 
+    margin-right: 8px;
+    font-family: 'Open Sans', sans-serif; 
+  }
+  
+  .infoIcon {
+    cursor: pointer;
+    color: #BD3D3A; 
+    font-size: 20px; 
+  }
+  

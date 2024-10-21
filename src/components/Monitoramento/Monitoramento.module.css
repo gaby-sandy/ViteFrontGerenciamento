@@ -1,0 +1,13 @@
+.box {
+    border: 1px solid #BD3D3A;
+    width: 280px;
+    height: 40px;
+    margin-top: -220px;
+    margin-left: 925px;
+}
+
+.box p {
+    color: #BD3D3A;
+    font-size: 13px;
+    margin-left: 7px;
+}

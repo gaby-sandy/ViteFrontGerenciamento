@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
+.container {
+  margin-left: 686px;
+  margin-top: -110px;
+}
+
+
+
+.programLabel {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 23px !important; 
+  font-weight: 400 !important; 
+  color: #000000 !important; 
+  margin-right: 1px; 
+}
+
+.labelWithIcon {
+    margin-left: -50px;
+}
+
+.infoIcon {
+  color: #BD3D3A;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 5px;
+}

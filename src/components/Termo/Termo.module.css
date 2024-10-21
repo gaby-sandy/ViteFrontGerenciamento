@@ -1,0 +1,48 @@
+.container {
+  margin-left: 640px;
+  margin-top: 50px;
+  }
+  
+  .sliderLabel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .infoIcon {
+    color: #BD3D3A;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  .textField {
+    width: 110px; 
+    height: 40px; 
+    margin: 0 12px; 
+  }
+  
+  .slider {
+    margin: 0 16px !important; 
+  }
+  
+  .sliderLabel span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 23px !important;
+    font-weight: 400 !important;
+    color: #000000 !important;
+    margin-right: 1px;
+  }
+  
+  .customSlider .MuiSlider-thumb {
+    background-color: #BD3D3A;
+  }
+  
+  .customSlider .MuiSlider-track {
+    background-color: #BD3D3A;
+  }
+  
+  .customSlider .MuiSlider-rail {
+    background-color: #e0e0e0; 
+  }
+  

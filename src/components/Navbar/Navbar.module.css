@@ -1,0 +1,116 @@
+/* Estilo para a navbar (cabeçalho) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../assets/background-home.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    height: 70px; /* Defina a altura exata do cabeçalho */
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo com semitransparência */
+    z-index: 100; /* Garanta que o cabeçalho esteja sempre à frente da sidebar */
+    background-position: 20% 80%;
+    position: fixed; /* Fixa o cabeçalho no topo */
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  /* Estilo para os ícones no cabeçalho */
+  .iconContainer svg {
+    color: white; /* Cor branca para os ícones */
+    cursor: pointer;
+    z-index: 101; /* Um z-index maior para garantir que o ícone fique visível sobre a sidebar */
+  }
+  
+  .nomedousuario {
+    font-size: 15px;
+    font-weight: 600;
+    margin-right: 10px;
+    color: #fff;
+    display: inline-block;
+    float: right; /* Alinha à direita */
+    right: 1;
+}
+  /* Estilo para o botão "hamburger" que abre/fecha a sidebar */
+  .hamburger {
+    margin-left: 10px; /* Ajuste para manter uma margem */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 101;
+}
+  
+  .hamburger .line {
+    width: 100%;
+    height: 3px;
+    background-color: #fff; /* Cor branca para as linhas */
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.active .line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  .sidebar {
+    position: absolute; /* Muda de fixed para absolute */
+    top: 70px; /* A sidebar começa logo abaixo do cabeçalho */
+    right: 0; /* Posiciona no lado direito da tela */
+    width: 250px;
+    height: calc(100vh - 70px); /* Ajusta a altura para a parte restante abaixo do cabeçalho */
+    background-color: #7a955a;
+    transition: transform 0.3s ease;
+    transform: translateX(100%); /* Inicialmente fora de vista, à direita */
+    z-index: 99; /* Fica atrás do cabeçalho */
+  }
+
+  .home {
+    position: fixed; /* Modifique para 'relative' */
+    height: 22px;
+    margin-left: 10px; /* Ajuste para um espaço pequeno */
+    color: #fff;
+    display: flex;
+    align-items: flex-end; /* Centralize o ícone */
+    right: 100px;
+    z-index: 101;
+}
+  
+  /* Quando a Sidebar estiver aberta */
+  .sidebar.open {
+    transform: translateX(0); /* Mostra a Sidebar ao abrir */
+  }
+  
+  /* Estilo para os itens da sidebar */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 15px;
+  }
+  
+  .sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #7a955a;
+  }
+  

@@ -1,0 +1,50 @@
+.container {
+    margin-left: 640px;
+    margin-top: 50px;
+}
+
+.sliderLabel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.infoIcon {
+    color: #BD3D3A;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.textField {
+    width: 120px; 
+    height: 36px; 
+    margin: 0 10px; 
+    text-align: right; 
+    padding: 0 8px; 
+}
+
+.slider {
+    margin: 0 10px !important;
+    width: calc(100% - 240px); 
+}
+
+.sliderLabel span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 23px !important;
+    font-weight: 400 !important;
+    color: #000000 !important;
+    margin-right: 1px;
+}
+
+.customSlider .MuiSlider-thumb {
+    background-color: #BD3D3A;
+}
+
+.customSlider .MuiSlider-track {
+    background-color: #BD3D3A;
+}
+
+.customSlider .MuiSlider-rail {
+    background-color: #e0e0e0; /* Cor da trilha */
+}

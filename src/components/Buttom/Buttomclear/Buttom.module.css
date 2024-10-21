@@ -1,0 +1,16 @@
+.container {
+  margin-left: 770px;
+  margin-top: 70px;
+}
+
+.customButton {
+    border: 2px solid #BD3D3A; 
+    color: #BD3D3A; 
+    font-family: 'Open Sans', sans-serif; 
+    border-radius: 22px; 
+  }
+  
+  .customButton:hover {
+    border-color: #BD3D3A; 
+    background-color: rgba(189, 61, 58, 0.1); 
+  }

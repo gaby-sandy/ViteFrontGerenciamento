@@ -1,0 +1,31 @@
+.container {
+    width: 400px;
+    height: auto;
+    text-align: center;
+}
+
+.titleWrapper {
+    margin-bottom: -1px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: black;
+    margin-right: 8px;
+}
+
+.icon {
+    color: #BD3D3A;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chartWrapper {
+    margin-top: 1px; 
+    margin-left: -23px;
+}

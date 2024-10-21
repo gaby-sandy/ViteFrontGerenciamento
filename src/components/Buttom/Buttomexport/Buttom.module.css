@@ -1,0 +1,17 @@
+.container {
+
+  margin-left: 750px;
+  margin-top: 18px;
+}
+
+.customButton {
+  border: 2px solid #BD3D3A; 
+  color: #BD3D3A; 
+  font-family: 'Open Sans', sans-serif; 
+  border-radius: 22px; 
+}
+
+.customButton:hover {
+  border-color: #BD3D3A; 
+  background-color: rgba(189, 61, 58, 0.1);
+}
