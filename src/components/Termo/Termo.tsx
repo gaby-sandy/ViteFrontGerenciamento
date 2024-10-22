@@ -7,17 +7,23 @@ import TextField from '@mui/material/TextField';
 import { MdInfoOutline } from "react-icons/md"; 
 import styles from './Termo.module.css'; 
 
-export default function RangeSlider({ onFilterChange }) {
-  const [value, setValue] = React.useState([20, 80]);
+interface RangeSliderProps {
+  onFilterChange: (value: number[]) => void;
+}
 
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-    onFilterChange(newValue);
+const RangeSlider: React.FC<RangeSliderProps> = ({ onFilterChange }) => {
+  const [value, setValue] = React.useState<number[]>([20, 80]);
+
+  const handleSliderChange = (_event: Event, newValue: number | number[]) => {
+    if (Array.isArray(newValue)) {
+      setValue(newValue);
+      onFilterChange(newValue);
+    }
   };
 
-  const handleInputChange = (index) => (event) => {
+  const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = [...value];
-    newValue[index] = event.target.value === '' ? '' : Number(event.target.value.replace('%', ''));
+    newValue[index] = event.target.value === '' ? 0 : Number(event.target.value.replace('%', ''));
     setValue(newValue);
     onFilterChange(newValue);
   };
@@ -90,4 +96,6 @@ export default function RangeSlider({ onFilterChange }) {
       </Box>
     </div>
   );
-}
+};
+
+export default RangeSlider;

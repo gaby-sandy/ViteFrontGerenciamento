@@ -4,18 +4,26 @@ import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdInfoOutline } from "react-icons/md";
-import styles from './Municipio.module.css'; 
+import styles from './Municipio.module.css';
 
-export default function Municipio({ onMunicipioChange }) {
-  const [value, setValue] = React.useState([]);
-  const [municipios, setMunicipios] = React.useState([]);
+interface MunicipioOption {
+  title: string;
+}
+
+interface MunicipioProps {
+  onMunicipioChange: (selectedMunicipios: string[]) => void;
+}
+
+const Municipio: React.FC<MunicipioProps> = ({ onMunicipioChange }) => {
+  const [value, setValue] = React.useState<MunicipioOption[]>([]);
+  const [municipios, setMunicipios] = React.useState<MunicipioOption[]>([]);
 
   React.useEffect(() => {
     const fetchMunicipios = async () => {
       try {
         const response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios');
         const data = await response.json();
-        const municipiosFormatados = data.map(municipio => ({ title: municipio.nome }));
+        const municipiosFormatados = data.map((municipio: { nome: string }) => ({ title: municipio.nome }));
         const municipiosComTodos = [{ title: 'Todos' }, ...municipiosFormatados];
         setMunicipios(municipiosComTodos);
         setValue([municipiosComTodos[0]]);
@@ -28,7 +36,7 @@ export default function Municipio({ onMunicipioChange }) {
     fetchMunicipios();
   }, [onMunicipioChange]);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: MunicipioOption[]) => {
     setValue(newValue);
     onMunicipioChange(newValue.map(option => option.title)); // Atualiza o pai com os títulos dos municípios selecionados
   };
@@ -70,3 +78,4 @@ export default function Municipio({ onMunicipioChange }) {
   );
 }
 
+export default Municipio;

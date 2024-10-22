@@ -9,8 +9,12 @@ import FormLabel from '@mui/material/FormLabel';
 import styled from './Monitoramento.module.css';
 import { MdInfoOutline } from "react-icons/md";
 
-export default function Monitoramento({ onMonitoramentoChange }) {
-  const handleChange = (event) => {
+interface MonitoramentoProps {
+  onMonitoramentoChange: (value: string) => void;
+}
+
+const Monitoramento: React.FC<MonitoramentoProps> = ({ onMonitoramentoChange }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onMonitoramentoChange(event.target.value);
   };
 
@@ -38,3 +42,5 @@ export default function Monitoramento({ onMonitoramentoChange }) {
     </div>
   );
 }
+
+export default Monitoramento;

@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { MdFilterAlt } from "react-icons/md";
 import Navbar from "./components/Navbar/Navbar";
 import Boxmonitoramento from './components/Monitoramento/Monitoramento';
