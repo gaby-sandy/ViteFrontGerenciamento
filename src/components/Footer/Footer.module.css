@@ -1,0 +1,22 @@
+
+.container {
+  width: 100%;
+  background: url('../../assets//images/background-home.jpeg') no-repeat bottom center;
+  background-size: cover;
+  padding: 7.8125rem 0 4.6875rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.875rem;
+}
+
+.ief, .vale, .faped {
+  width: 150px;
+}
+
+.ufsj {
+  width: 75px;
+}
