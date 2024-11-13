@@ -7,41 +7,37 @@ import { TabsList as BaseTabsList } from '@mui/base/TabsList';
 import { useNavigate } from 'react-router-dom';
 
 export default function KeyboardNavigation() {
+  const navigate = useNavigate();
 
-  const Navegação = useNavigate();
+  const handleTabChange = (
+    event: React.SyntheticEvent | null,
+    value: number | string | null
+  ) => {
+    if (value === null) return;
 
-  const handleTabChange = (event: React.SyntheticEvent | null, value: number | string | null ) => {
-    
-    if (value===null) return;
-    
-    switch(value){
-        
-        case 1:
-          Navegação('/');
-          break;
-        
-        case 2:
-          Navegação('/priorizacao');
-          break;
-        
-        case 3:
-          Navegação('/implantacao');
-          break;
-        
-        case 4:
-          Navegação('/monitoramento');
-          break;
-        
-        case 5:
-          Navegação('/inteligencia de dados');
-          break;
-        
-        default:
-          break;
-      }
+    switch (value) {
+      case 1:
+        navigate('/');
+        break;
+      case 2:
+        navigate('/priorizacao');
+        break;
+      case 3:
+        navigate('/implantacao');
+        break;
+      case 4:
+        navigate('/monitoramento');
+        break;
+      case 5:
+        navigate('/inteligencia-de-dados');
+        break;
+      default:
+        break;
+    }
   };
+
   return (
-    <div  style={{ position: 'relative' }}>
+    <div className="tabs-container">
       <Tabs
         defaultValue={1}
         aria-label="Tabs where selection follows focus"
@@ -53,42 +49,30 @@ export default function KeyboardNavigation() {
           <Tab value={2}>Priorização</Tab>
           <Tab value={3}>Implantação</Tab>
           <Tab value={4}>Monitoramento</Tab>
-          <Tab value={5}>Inteligência</Tab>
-   
+          <Tab value={5}>Inteligência de dados</Tab>
         </TabsList>
       </Tabs>
-      <hr style={{
-          position: 'absolute',
-          top: '100%', 
-          left: 0,
-          width: '100vw', // Ocupa a tela toda
-          margin: 0,
-          border: 'none',
-          borderTop: '0.5px solid black',
-        }}></hr>
+      <hr className="tabs-divider" />
     </div>
   );
 }
-
 
 const Tab = styled(BaseTab)`
   font-family: 'IBM Plex Sans', sans-serif;
   color: black;
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: bold;
-  background-color: #EAEAEA;
-  width: 100%;
-  padding: 12px;
-  margin: 1px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: #eaeaea;
+  padding: 14px 20px;
+  margin: 0 3px;
   border: none;
   border-radius: 7px 7px 0 0;
   display: flex;
   justify-content: center;
 
-
   &:hover {
-    background-color:  #EAEAEA;
+    background-color: #eaeaea;
   }
 
   &:focus {
@@ -97,7 +81,7 @@ const Tab = styled(BaseTab)`
 
   &.${tabClasses.selected} {
     background-color: #fff;
-    color: black};
+    color: black;
   }
 
   &.${buttonClasses.disabled} {
@@ -106,18 +90,27 @@ const Tab = styled(BaseTab)`
   }
 `;
 
-const TabsList = styled(BaseTabsList)(
-  ({ theme }) => `
-  min-width: 700px;
-  margin-left: 550px;
-  margin-top: -50px;
- 
-  border-radius: 10px;
-  margin-bottom: 7px 7px 0 0;
+const TabsList = styled(BaseTabsList)`
   display: flex;
   align-items: center;
-  justify-content: center;
-  align-content: space-between;
-  
-  `,
-);
+  justify-content: flex-start; /* Alinha à esquerda */
+  gap: 0px;
+  padding: 0;
+  margin-left: 20px; /* Move as abas para a direita */
+  margin-right: 40px;
+  flex-wrap: nowrap;
+
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    min-width: 100%;
+    justify-content: center;
+    gap: 5px;
+    margin-left: 10px; /* Ajusta a margem para telas menores */
+  }
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-left: 5px; /* Menor margem em telas muito pequenas */
+  }
+`;

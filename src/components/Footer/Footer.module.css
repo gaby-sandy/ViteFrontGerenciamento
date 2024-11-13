@@ -1,22 +1,47 @@
-
 .container {
-  width: 100%;
-  background: url('../../assets//images/background-home.jpeg') no-repeat bottom center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/images/background-home.jpeg);
+  background-position: center;
   background-size: cover;
-  padding: 7.8125rem 0 4.6875rem;
+  position: relative;
+  width: 100%;
+  height: 150px; 
+  padding: 1rem;
+  z-index: 1000;
+  margin-top: 40px;
 }
 
 .content {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 1.875rem;
+  align-items: center;
+  gap: 20px;
 }
 
 .ief, .vale, .faped {
-  width: 150px;
+  max-width: 95px; 
+  height: auto;
 }
 
-.ufsj {
-  width: 75px;
+.ufsj{
+  max-width: 60px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    height: 120px;
+    flex-direction: column;
+  }
+
+  .content {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .ief, .vale, .ufsj, .faped {
+    max-width: 60px; 
+  }
 }

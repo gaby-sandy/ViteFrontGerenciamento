@@ -4,36 +4,43 @@ import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import RoomIcon from '@mui/icons-material/Room';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import { Link } from '@mui/material';
+import data from '../../data/data.json';
 
 interface RowData {
   id: number;
-  lastName: string;
-  firstName: string;
-  age: number | null;
-  pdfUrl: string; // URL do PDF
-  mapUrl: string; // URL do mapa
-  status: boolean; // Adicionando status ao RowData
+  car: number;
+  codigoSolicitacao: number;
+  area: number;
+  modulosFiscais: number;
+  municipio: string;
+  região: string;
+  pdfUrl: string;
+  mapUrl: string;
+  status: boolean;
 }
 
+{/* Essa parte é do status do datagrid, entender melhor o fucinoamento */}
 const columns: GridColDef<RowData>[] = [
   {
     field: 'status',
     headerName: 'Status',
-    width: 90,
+    flex: 1,
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <CheckCircleOutlineIcon
-        onClick={() => {
+        onClick={() => {    {/* talvez criar uma função para o click*/}
           params.api.setRowData((oldRows) =>
             oldRows.map((row) =>
               row.id === params.row.id ? { ...row, status: !row.status } : row
             )
           );
         }}
-        sx={{ 
-          cursor: 'pointer', 
-          color: params.row.status ? 'green' : 'inherit', 
-          fontSize: '18px' 
+        sx={{
+          cursor: 'pointer',
+          color: params.row.status ? 'green' : 'inherit',
+          fontSize: { xs: '16px', sm: '18px' },
         }}
       />
     ),
@@ -41,82 +48,139 @@ const columns: GridColDef<RowData>[] = [
   {
     field: 'car',
     headerName: 'CAR',
-    type: 'number',
-    width: 150,
+    flex: 1,
     editable: true,
   },
   {
     field: 'codigoSolicitacao',
     headerName: 'Código de solicitação',
-    type: 'number',
-    width: 170,
+    flex: 1,
     editable: true,
   },
   {
     field: 'area',
     headerName: 'Área (ha)',
-    type: 'number',
-    width: 110,
+    flex: 1,
     editable: true,
   },
   {
     field: 'modulosFiscais',
     headerName: 'Módulos fiscais',
-    type: 'number',
-    width: 140,
+    flex: 1,
     editable: true,
   },
   {
     field: 'municipio',
     headerName: 'Município',
-    width: 150,
+    flex: 1,
     editable: true,
   },
   {
     field: 'região',
     headerName: 'Região',
-    width: 150,
+    flex: 1,
     editable: true,
   },
   {
     field: 'anexo',
     headerName: 'Anexo',
-    width: 110,
+    flex: 1,
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <div style={{ display: 'flex', gap: '8px' }}>
         <Link href={params.row.pdfUrl} target="_blank" rel="noopener noreferrer">
-          <PictureAsPdfIcon />
+        <PictureAsPdfIcon
+        sx={{
+            fontSize: { xs: '18px', sm: '24px' },
+            color: '#ADAEA8',
+            '&:hover': {
+            color: '#901C19', // cor ao passar o mouse
+           },
+          }}
+/>
         </Link>
         <Link href={params.row.mapUrl} target="_blank" rel="noopener noreferrer">
-          <RoomIcon />
+        <RoomIcon
+          sx={{
+            fontSize: { xs: '18px', sm: '24px' },
+            color: '#ADAEA8',
+            '&:hover': {
+              color: '#901C19', // cor ao passar o mouse
+            },
+          }}
+        />
         </Link>
       </div>
     ),
   },
 ];
 
-const rows: RowData[] = [
-  { id: 1, car: 1234, codigoSolicitacao: 5678, area: 100, modulosFiscais: 2, municipio: 'Viçosa', região: 'Zona da mata', pdfUrl: 'path/to/document1.pdf', mapUrl: 'path/to/map1.pdf', status: false },
-  { id: 2, car: 2345, codigoSolicitacao: 6789, area: 200, modulosFiscais: 3, municipio: 'Uberaba', região: 'Triangulo mineiro', pdfUrl: 'path/to/document2.pdf', mapUrl: 'path/to/map2.pdf', status: true },
-];
-
 const DataGridDemo: React.FC = () => {
+  const [page, setPage] = React.useState(1);
+  const pageSize = 5; {/* quantidade de dados que vai aparecer por pagina*/}
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
   return (
-    <Box sx={{ height: 400, width: '100%'}}>
+    <Box
+      sx={{
+        width: '100%',
+        height: { xs: 'calc(100vh - 300px)', sm: 'calc(100vh - 200px)' },
+        maxWidth: '100%',
+        padding: { xs: '0 10px', sm: '0 20px' },
+        boxSizing: 'border-box',
+        '& .MuiDataGrid-cell': {
+          fontSize: { xs: '12px', sm: '14px' },
+        },
+        '& .MuiDataGrid-row': {
+          backgroundColor: '#FFFFFF',
+        },
+      }}
+    >
       <DataGrid
-        rows={rows}
+        rows={data.slice((page - 1) * pageSize, page * pageSize)}  // Usando os dados do JSON
         columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
         pageSizeOptions={[5]}
-        checkboxSelection
+        //checkboxSelection 
         disableRowSelectionOnClick
+        autoHeight
+        hideFooterPagination
+        disableColumnResize
       />
+
+      {/*Aqui a nova paginação */}
+      <Stack spacing={2} sx={{ alignItems: 'center', mt: 2 }}>
+        <Pagination
+          count={Math.ceil(data.length / pageSize)}
+          page={page}
+          onChange={handlePageChange}
+          shape="rounded"
+          sx={{
+            '& .MuiPaginationItem-root': {
+              color: '#000000',
+              backgroundColor: '#D9D9D9',
+              '&:hover': {
+                backgroundColor: '#D9D9D9',
+              },
+            },
+            '& .MuiPaginationItem-page.Mui-selected': {
+              color: '#FFFFFF',
+              backgroundColor: '#901C19',
+              '&:hover': {
+                backgroundColor: '#901C19',
+              },
+            },
+            '& .MuiPaginationItem-previousNext': {
+              color: '#000000',
+              backgroundColor: '#D9D9D9',
+              '&:hover': {
+                backgroundColor: '#D9D9D9',
+              },
+            },
+          }}
+        />
+      </Stack>
     </Box>
   );
 };

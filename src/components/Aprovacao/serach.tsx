@@ -50,6 +50,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
   const [showCarSearch, setShowCarSearch] = React.useState(false);
   const [showCodigoSearch, setShowCodigoSearch] = React.useState(false);
 
+
   const handleOutsideClick = (event: MouseEvent) => {
     if (anchorEl && !anchorEl.contains(event.target as Node)) {
       setShowRegionalMenu(false);
@@ -63,6 +64,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, [anchorEl]);
 
+  {/*chamei essa api do gov para aparecer todos os muncipios, inves de ter que colcoar todos em um veotr */}
   React.useEffect(() => {
     const fetchMunicipios = async () => {
       try {
@@ -79,9 +81,9 @@ const Autocomplete = React.forwardRef(function Autocomplete(
   }, []);
 
   const handleOptionClick = (option: string) => {
-    setShowRegionalMenu(option === 'Pesquisa por regional');
-    setShowProcessMenu(option === 'Pesquisa por Fase de processo');
-    setShowMunicipiosMenu(option === 'Pesquisa por municipio');
+    setShowRegionalMenu(option === 'Pesquisa por regional' ? !showRegionalMenu : false);
+    setShowProcessMenu(option === 'Pesquisa por Fase de processo' ? !showProcessMenu : false);
+    setShowMunicipiosMenu(option === 'Pesquisa por municipio' ? !showMunicipiosMenu : false);
     setShowCarSearch(option === 'Pesquisa por CAR');
     setShowCodigoSearch(option === 'Pesquisa por codigo de solicitação');
   };
@@ -97,23 +99,30 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         ref={rootRef}
         className={focused ? 'focused' : undefined}
       >
-        <StyledInput id={id} disabled={disabled} readOnly={readOnly} {...getInputProps()} />
+        <StyledInput id={id} disabled={disabled} readOnly={readOnly} {...getInputProps() } placeholder="Pesquise aqui..."/>
         
+        {/* vÊ se eu tiro isso */}
         {hasClearIcon && (
           <StyledClearIndicator {...getClearProps()}>
             <ClearIcon />
           </StyledClearIndicator>
         )}
+
+        
+        {/* melhorar o icone , ta dando um error de tipagem, mas funciona */}
         <StyledPopupIndicator {...getPopupIndicatorProps()} className={popupOpen ? 'popupOpen' : undefined}>
-          <KeyboardArrowDownIcon sx={{ color: "#ADAEA8", fontSize:"30px" }} />
+          <KeyboardArrowDownIcon sx={{ color: "#ADAEA8", fontSize:"32px" }} />
         </StyledPopupIndicator>
       </StyledAutocompleteRoot>
 
-      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '1250px', marginTop: '-50px', color: '#ADAEA8' }}>
-        <p style={{ fontFamily: " 'Montserrat', sans-serif", marginRight: '4px' }}>Qnt: 2</p>
-        <FilterAltIcon /> 
+      {/* parte do mostrar a qauntiadade e o icone de filtro*/}
+      <div className="quantity-filter" style={{ display: 'flex', alignItems: 'center', marginLeft: '87vw', marginTop: '-40px', color: '#ADAEA8' }}>
+        <p style={{ fontFamily: " 'Montserrat', sans-serif", marginRight: '4px', fontSize: '1rem', }}>Quantidade: 2</p>
+        <FilterAltIcon sx={{ fontSize: '2.2rem' }} /> 
       </div>
 
+
+        {/*Isso é o menu que do pesqusiar (Todos os pesqusiar por..)*/}
       {anchorEl && (
         <Popper open={popupOpen} anchorEl={anchorEl} slots={{ root: StyledPopper }}>
           <StyledListbox {...getListboxProps()}>
@@ -139,13 +148,14 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         </Popper>
       )}
 
+        {/*  Aqui é o menus secundarios  */ }
+
       {showRegionalMenu && (
         <Popper 
           open={showRegionalMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [40, -1035] } }]}
-        >
+          modifiers={[{ name: 'offset', options: { offset: [40, -641] } }]}>
           <StyledListbox>
             {regionals.map((regional, index) => (
               <StyledOption key={index}>{regional.label}</StyledOption>
@@ -159,8 +169,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showProcessMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [90, -1035] } }]}
-        >
+          modifiers={[{ name: 'offset', options: { offset: [95, -641] } }]}>
           <StyledListbox>
             {process.map((fase, index) => (
               <StyledOption key={index}>{fase.label}</StyledOption>
@@ -174,8 +183,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showMunicipiosMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [90, -1035] } }]}
-        >
+          modifiers={[{ name: 'offset', options: { offset: [90, -641] } }]}>
           <StyledListbox>
             {municipios.map((municipio, index) => (
               <StyledOption key={index}>{municipio.label}</StyledOption>
@@ -183,21 +191,21 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           </StyledListbox>
         </Popper>
       )}
-
-       
-       {showCarSearch && (
+         {/*  Aqui é os negocios de pesquisar (CAr e Codigo de solicitação) */ }
+      {showCarSearch && (
         <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
-          <TextField id="outlined-car" size="small" type="search" label="CAR" variant="outlined" sx={{backgroundColor: 'white'}}/>
-          <Button variant="contained" size="small" sx={{ ml: 1 }}>Pesquisar</Button>
+          <TextField id="outlined-car" size="small" type="search" label="CAR" variant="outlined" sx={{ backgroundColor: 'white', boxShadow: (theme) => `0px 2px 4px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'}`}} />
+          <Button variant="contained" size="small" sx={{ ml: 1, backgroundColor: '#BD3D3A' }}>Pesquisar</Button>
         </Box>
       )}
 
-        {showCodigoSearch && (
+      {showCodigoSearch && (
         <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
-          <TextField id="outlined-codigo" size="small" type="search" label="Código de Solicitação" variant="outlined" sx={{backgroundColor: 'white'}}/>
-          <Button variant="contained" size="small" sx={{ ml: 1 }}>Pesquisar</Button>
+          <TextField id="outlined-codigo" size="small" type="search" label="Código de Solicitação" variant="outlined" sx={{ backgroundColor: 'white', boxShadow: (theme) => `0px 2px 4px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'}`}} />
+          <Button variant="contained" size="small" sx={{ ml: 1, backgroundColor: '#BD3D3A' }}>Pesquisar</Button>
         </Box>
       )}
+
     </React.Fragment>
   );
 });
@@ -242,12 +250,11 @@ const StyledAutocompleteRoot = styled('div')(
   gap: 5px;
   padding-right: 5px;
   overflow: hidden;
-  width: 1100px;
-  margin-left: 112px; 
-  margin-top: -44px;
+  width: 320px;
+  margin-left: 112px;
+  margin-top: -30px;
   height: 39px;
   margin-bottom: 8px;
- 
 
   &.focused {
     border-color: ${blue[400]};
@@ -261,6 +268,17 @@ const StyledAutocompleteRoot = styled('div')(
 
   &:focus-visible {
     outline: 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 280px;
+    margin-left: 0;
+  }
+
+  @media (max-width: 480px) {
+    width: 240px;
+    margin-left: 0;
+    margin-top: -20px;
   }
 `,
 );
@@ -359,6 +377,42 @@ const StyledNoOptions = styled('div')(
 `,
 );
 
+
+<style jsx>{`
+  .quantity-filter {
+    display: flex;
+    align-items: center;
+    margin-left: 5vw;
+    margin-top: -40px;
+    color: #adaea8;
+  }
+
+  .quantity-filter p {
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 4px;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .quantity-filter {
+      margin-left: 10px;
+    }
+
+    .quantity-filter p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quantity-filter {
+      margin-left: 5px;
+    }
+
+    .quantity-filter p {
+      font-size: 0.9rem;
+    }
+  }
+`}</style>
 
 const search = [
   { label: 'Pesquisa por regional' },

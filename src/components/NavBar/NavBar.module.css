@@ -1,50 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /*alinhar os itens*/
-    background-image: url(../../assets/images/background-home.jpeg);
-    background-position: center;
-    background-size: cover;
-    top: 0;
-    width: 100%;
-    height: 70px;
-    position: fixed;
-    background-position: 10% 80%; /*Faz qual parte apareccer */
-    z-index: 1000;
-    
-
+.container {
+  display: flex;
+  justify-content: space-between; /* Espaço entre logo e os itens à direita */
+  align-items: center; 
+  background-image: url(../../assets/images/background-home.jpeg);
+  background-position: 10% 80%;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 1rem;
+  z-index: 1000;
 }
 
-.username{
-    font-family: "League Spartan", sans-serif;;
-    color: white;
-    font-size: 17px;
-    font-weight: 600;
-    margin-Left:925px;
+.rightItems {
+  display: flex; /* Organiza os itens em linha */
+  align-items: center; /* Alinha os itens verticalmente */
+  gap: 20px; /* Espaço entre os itens */
+  margin-left: auto; /* Alinha os itens à direita */
 }
 
-.username:hover{
-    color:#9DCE5B;
+.username {
+  font-family: "League Spartan", sans-serif;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;  /* tiraqualquer margem que poderia deslocar o nome de usuario */
 }
 
-.home{
-    color: white;
-    margin-left:90px;
+.username:hover {
+  color: #9DCE5B;
 }
 
-.home:hover{
-    color:#9DCE5B;
-    cursor: pointer;
+.home, .menu {
+  color: white;
 }
 
-.menu{
-    color: white;
-    margin-right: 50px;
+.home:hover, .menu:hover {
+  color: #9DCE5B;
+  cursor: pointer;
 }
 
-.menu:hover{
-    color: #9DCE5B;
-    cursor: pointer;
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    height: 60px;  
+  }
+
+  .username {
+    font-size: 14px;  
+  }
+
+  .rightItems {
+    gap: 10px;  /* Reduz o espaçamento entre os itens em telas pequenas */
+  }
 }

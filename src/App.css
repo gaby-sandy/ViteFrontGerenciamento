@@ -1,18 +1,71 @@
-body{
-    background-color: #FCF7F7; 
-    margin: 0;
-  
+body {
+  background-color: #FCF7F7;
+  margin: 0;
 }
 
-.container{
-    margin-top: 70px;
-    margin: 0;
-    
+
+.content {
+  padding-top: 70px;
 }
 
-h1{
-    font-family:  'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-top: 87px;
-    margin-left: 20px;
-    font-weight: 400;
+/* Container que vair envolver título e abas */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+
+h1 {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  color: #333;
+  font-size: 2vw;
+  margin: 0;
+}
+
+/* Ajustes de responsividade p tela de difrneste tamanhos  */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 3vw;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4.5vw;
+    margin-top: 10px;
+  }
+
+  .content {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 5.5vw;
+    margin-top: 8px;
+  }
+
+  .content {
+    padding-top: 50px;
+  }
+}
+
+/* Estilo para o hr */
+.tabs-divider {
+  width: 100%; /* Garante que o hr ocupe 100% da largura do contêeiner pai */
+  border: none;
+  border-top: 1px solid #333; 
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  position: absolute; /* hr epga a largura total da tela */
+  left: 0; 
 }

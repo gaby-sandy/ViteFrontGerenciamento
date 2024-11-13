@@ -1,14 +1,13 @@
-
 import Search from '../components/Aprovacao/serach';
-import Datagrid from '../components/Aprovacao/datagrid';
+import DataGridDemo from '../components/Aprovacao/datagrid';
 
-export default function aprovacao(){
-  return(
+export default function Aprovacao() {
+  return (
     <div>
-      <Search/>
-      <Datagrid/>
-
+      <div style={{ marginBottom: '20px' }}>
+        <Search />
+      </div>
+      <DataGridDemo />
     </div>
-
-  )
+  );
 }
