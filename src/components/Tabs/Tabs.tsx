@@ -65,6 +65,7 @@ export default function KeyboardNavigation() {
           margin: 0,
           border: 'none',
           borderTop: '0.5px solid black',
+          
         }}></hr>
     </div>
   );
@@ -72,11 +73,11 @@ export default function KeyboardNavigation() {
 
 
 const Tab = styled(BaseTab)`
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: black;
   cursor: pointer;
   font-size: 0.875rem;
-  font-weight: bold;
+ 
   background-color: #EAEAEA;
   width: 100%;
   padding: 12px;
@@ -109,11 +110,11 @@ const Tab = styled(BaseTab)`
 const TabsList = styled(BaseTabsList)(
   ({ theme }) => `
   min-width: 700px;
-  margin-left: 550px;
+  margin-left: 1300px;
   margin-top: -50px;
  
   border-radius: 10px;
-  margin-bottom: 7px 7px 0 0;
+  margin-bottom: 2px 7px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;

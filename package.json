@@ -18,6 +18,7 @@
     "@mui/styled-engine-sc": "^6.1.4",
     "@mui/x-data-grid": "^7.22.0",
     "axios": "^1.7.7",
+    "ief-gerenciamento": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",

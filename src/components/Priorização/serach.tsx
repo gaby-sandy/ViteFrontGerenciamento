@@ -109,8 +109,8 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         </StyledPopupIndicator>
       </StyledAutocompleteRoot>
 
-      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '1250px', marginTop: '-50px', color: '#ADAEA8' }}>
-        <p style={{ fontFamily: " 'Montserrat', sans-serif", marginRight: '4px' }}>Qnt: 2</p>
+      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '1800px', marginTop: '-50px', color: '#ADAEA8' }}>
+        <p style={{ fontFamily: " 'Montserrat', sans-serif", marginRight: '6px' }}>Quantidade:</p>
         <FilterAltIcon /> 
       </div>
 
@@ -144,7 +144,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showRegionalMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [40, -1035] } }]}
+          modifiers={[{ name: 'offset', options: { offset: [40, -641] } }]}
         >
           <StyledListbox>
             {regionals.map((regional, index) => (
@@ -159,7 +159,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showProcessMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [90, -1035] } }]}
+          modifiers={[{ name: 'offset', options: { offset: [95, -650] } }]}
         >
           <StyledListbox>
             {process.map((fase, index) => (
@@ -174,7 +174,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showMunicipiosMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [90, -1035] } }]}
+          modifiers={[{ name: 'offset', options: { offset: [40, -641] } }]}
         >
           <StyledListbox>
             {municipios.map((municipio, index) => (
@@ -242,7 +242,7 @@ const StyledAutocompleteRoot = styled('div')(
   gap: 5px;
   padding-right: 5px;
   overflow: hidden;
-  width: 1100px;
+  width: 320px;
   margin-left: 112px; 
   margin-top: -44px;
   height: 39px;
@@ -269,7 +269,7 @@ const StyledInput = styled('input')(
   ({ theme }) => `
   font-size: 0.875rem;
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
   background: inherit;
@@ -278,7 +278,7 @@ const StyledInput = styled('input')(
   padding: 8px 12px;
   outline: 0;
   flex: 1 0 auto;
-  margin
+  
 `,
 );
 
@@ -286,7 +286,7 @@ const StyledInput = styled('input')(
 const StyledClearIndicator = styled('button')(
   ({ theme }) => `
   display: flex;
-  align-items: center;
+  align-items: left;
   cursor: pointer;
   padding: 8px;
   border: none; // Removendo a borda do botão para manter o estilo
@@ -320,7 +320,7 @@ const StyledPopper = styled('div')`
 
 const StyledListbox = styled('ul')(
   ({ theme }) => `
-  font-family: 'IBM Plex Sans', sans-serif;
+font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
   padding: 6px;
@@ -329,7 +329,7 @@ const StyledListbox = styled('ul')(
   border-radius: 12px;
   overflow: auto;
   outline: 0;
-  max-height: 300px;
+  max-height: 500px;
   z-index: 1;
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[300]};
@@ -339,7 +339,7 @@ const StyledListbox = styled('ul')(
 const StyledOption = styled('li')(
   ({ theme }) => `
   list-style: none;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 4px;
   cursor: pointer;
   &:hover {
@@ -355,6 +355,7 @@ const StyledOption = styled('li')(
 const StyledNoOptions = styled('div')(
   ({ theme }) => `
   padding: 8px;
+  padding-left:10px
   color: ${theme.palette.mode === 'dark' ? grey[600] : grey[600]};
 `,
 );

@@ -1,9 +1,12 @@
-
-
+import Search from '../components/Priorização/serach';
+import DataTable from '../components/Priorização/datagrid';
 export default function Priorizacao(){
     return(
         <div>
-            <p>priorização</p>
+            
+            <Search/>
+      <DataTable/>
+
         </div>
     )
 }

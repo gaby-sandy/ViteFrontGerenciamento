@@ -18,11 +18,13 @@
 }
 
 .username{
-    font-family: "League Spartan", sans-serif;;
+    font-family: "League Spartan", sans-serif;
+    align-items: right;
     color: white;
     font-size: 17px;
     font-weight: 600;
-    margin-Left:925px;
+    margin-Left:1600px;
+    
 }
 
 .username:hover{

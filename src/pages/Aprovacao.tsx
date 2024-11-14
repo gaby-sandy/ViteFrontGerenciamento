@@ -1,12 +1,8 @@
-
-import Search from '../components/Aprovacao/serach';
-import Datagrid from '../components/Aprovacao/datagrid';
-
+import Search from '../components/Priorização/serach';
 export default function aprovacao(){
   return(
     <div>
-      <Search/>
-      <Datagrid/>
+     <Search/>
 
     </div>
 
