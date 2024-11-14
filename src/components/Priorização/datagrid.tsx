@@ -3,9 +3,9 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 
 const columns: GridColDef[] = [
-  { field: '', headerName: 'Status', width: 70 },
-  { field: 'firstNam', headerName: 'Areá (ha)', width: 130 },
-  { field: 'l', headerName: 'Modulos Fiscais', width: 130 },
+  { field: '', headerName: 'Status', width: 100 },
+  { field: 'firstNam', headerName: 'Areá (ha)', width: 100 },
+  { field: 'l', headerName: 'Modulos Fiscais', width: 100 },
   
   {
     field: 'municipio',
@@ -67,14 +67,19 @@ const columns: GridColDef[] = [
 export default function DataTable() {
   return (
     
-    <Paper sx={{ height: 500, width: '90%' }}>
+    <Paper sx={{ display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 500,
+      width: '90%',
+      margin: ' auto',}}>
+     
       <DataGrid
      
       sx={{}} 
        // rows={rows}//
         columns={columns}
               pageSizeOptions={[0]}
-
               hideFooterPagination
         
       />

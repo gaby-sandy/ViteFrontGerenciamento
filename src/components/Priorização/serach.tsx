@@ -93,6 +93,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
     <React.Fragment>
       <p style={{ fontFamily: " 'Open Sans', sans-serif", fontWeight: 600, marginLeft: '25px', marginTop: '25px' }}>Selecione:</p>
       <StyledAutocompleteRoot
+      
         {...getRootProps(other)}
         ref={rootRef}
         className={focused ? 'focused' : undefined}
@@ -187,14 +188,14 @@ const Autocomplete = React.forwardRef(function Autocomplete(
        
        {showCarSearch && (
         <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
-          <TextField id="outlined-car" size="small" type="search" label="CAR" variant="outlined" sx={{backgroundColor: 'white'}}/>
+          <TextField id="outlined-car" size="small" type="search" label="CAR" variant="outlined" sx={{backgroundColor: 'white',marginLeft: '105px', }}/>
           <Button variant="contained" size="small" sx={{ ml: 1 }}>Pesquisar</Button>
         </Box>
       )}
 
         {showCodigoSearch && (
         <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
-          <TextField id="outlined-codigo" size="small" type="search" label="Código de Solicitação" variant="outlined" sx={{backgroundColor: 'white'}}/>
+          <TextField id="outlined-codigo" size="small" type="search" label="Código de Solicitação" variant="outlined" sx={{backgroundColor: 'white',marginLeft: '105px',}}/>
           <Button variant="contained" size="small" sx={{ ml: 1 }}>Pesquisar</Button>
         </Box>
       )}
