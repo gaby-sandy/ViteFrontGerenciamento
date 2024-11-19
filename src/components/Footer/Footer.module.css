@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../../assets/images/background-home.jpeg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../../assets/images/background-home.jpeg);
   background-position: center;
   background-size: cover;
-  position: relative;
   width: 100%;
-  height: 150px; 
+  height: 150px;
   padding: 1rem;
   z-index: 1000;
   margin-top: 40px;
@@ -21,19 +21,20 @@
 }
 
 .ief, .vale, .faped {
-  max-width: 95px; 
+  max-width: 95px;
   height: auto;
 }
 
-.ufsj{
+.ufsj {
   max-width: 60px;
 }
 
-/* Responsividade */
+/* Responsividade para telas de 768px */
 @media (max-width: 768px) {
   .container {
-    height: 120px;
     flex-direction: column;
+    min-height: 120px;
+    padding: 0.5rem; 
   }
 
   .content {
@@ -42,6 +43,21 @@
   }
 
   .ief, .vale, .ufsj, .faped {
-    max-width: 60px; 
+    max-width: 60px;
+  }
+}
+
+/* Responsividade para telas de 480px */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .ief, .vale, .ufsj, .faped {
+    max-width: 45px; 
+  }
+
+  .content {
+    gap: 10px; 
   }
 }

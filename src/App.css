@@ -6,6 +6,23 @@ body {
 
 .content {
   padding-top: 70px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Responsividade adicional para espaçamento */
+@media (max-width: 768px) {
+  main.content {
+    padding-bottom: 60px; 
+  }
+}
+
+@media (max-width: 480px) {
+  main.content {
+    padding-bottom: 50px;
+  }
 }
 
 /* Container que vair envolver título e abas */

@@ -116,7 +116,7 @@ const columns: GridColDef<RowData>[] = [
 
 const DataGridDemo: React.FC = () => {
   const [page, setPage] = React.useState(1);
-  const pageSize = 5; {/* quantidade de dados que vai aparecer por pagina*/}
+  const pageSize = 7; {/* quantidade de dados que vai aparecer por pagina*/}
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -126,10 +126,12 @@ const DataGridDemo: React.FC = () => {
     <Box
       sx={{
         width: '100%',
-        height: { xs: 'calc(100vh - 300px)', sm: 'calc(100vh - 200px)' },
+        height: { xs: 'calc(100vh - 150px)', sm: 'calc(100vh - 170px)' },
         maxWidth: '100%',
         padding: { xs: '0 10px', sm: '0 20px' },
+        marginTop: { xs: '20px', sm: '40px' },
         boxSizing: 'border-box',
+        marginBottom: { xs: '40px', sm: '60px' },
         '& .MuiDataGrid-cell': {
           fontSize: { xs: '12px', sm: '14px' },
         },

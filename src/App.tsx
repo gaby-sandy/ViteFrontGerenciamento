@@ -19,7 +19,7 @@ function App() {
 
           <AppRouters />
         </main>
-        <Footer/>
+        <Footer/> 
       </Router>
     </>
   );

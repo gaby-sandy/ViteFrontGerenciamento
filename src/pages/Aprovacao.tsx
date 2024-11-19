@@ -4,7 +4,7 @@ import DataGridDemo from '../components/Aprovacao/datagrid';
 export default function Aprovacao() {
   return (
     <div>
-      <div style={{ marginBottom: '20px' }}>
+      <div>
         <Search />
       </div>
       <DataGridDemo />
