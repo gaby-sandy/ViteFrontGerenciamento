@@ -6,11 +6,13 @@ import { IoMenu } from "react-icons/io5";
 export default function NavBar(){
     return( 
         <div className={styles.container}>
-            <img src={Logo} alt='Logo do Pra' style={{width:'60px', marginLeft:'20px'}}/>
+            <img src={Logo} alt='Logo do Pra' style={{width:'75px', marginLeft:'20px'}}/>
 
             <p className={styles.username}>Nome de úsuario</p>
-            <TiHome size={25}  className={styles.home} />
+            <TiHome size={25}  className={styles.home} /> 
             <IoMenu size={34} className={styles.menu}/>
+
+            
 
         </div>
     )

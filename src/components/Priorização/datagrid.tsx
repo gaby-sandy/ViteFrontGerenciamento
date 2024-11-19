@@ -1,87 +1,57 @@
 
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import Paper from '@mui/material/Paper';
-
-const columns: GridColDef[] = [
-  { field: '', headerName: 'Status', width: 100 },
-  { field: 'firstNam', headerName: 'Areá (ha)', width: 100 },
-  { field: 'l', headerName: 'Modulos Fiscais', width: 100 },
-  
-  {
-    field: 'municipio',
-    headerName: 'Municipio',
-    type: 'number',
-    width: 90,
-  },
-
-  {
-    field: 'viveiros',
-    headerName: 'Viveiros',
-    type: 'number',
-    width: 90,
-  },
-  {
-    field: 'Ordem',
-    headerName: 'Ordem',
-    type: 'number',
-    width: 90,
-  },
-  {
-    field: 'prioridade',
-    headerName: 'Prioridade',
-    type: 'number',
-    width: 90,
-  },
-  
-  
-  {
-    field: 'programa',
-    headerName: 'Programa',
-    sortable: false,
-    width: 100,
-    //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-  },
-  {
-    field: 'tc',
-    headerName: 'TC',
-    type: 'number',
-    width: 100,
-  },
-];
-
-//const rows = [
-  //{ id: 1, lastName: '', firstName: '', age: 35 },
-  //{ id: 2, lastName: '', firstName: '', age: 42 },
- // { id: 3, lastName: '', firstName: '', age: 45 },
- // { id: 4, lastName: '', firstName: '', age: 16 },
- // { id: 5, lastName: '', firstName: '', age: null },
- // { id: 6, lastName: '', firstName: null, age: 150 },
- // { id: 7, lastName: '', firstName: '', age: 44 },
- // { id: 8, lastName: '', firstName: '', age: 36 },
- // { id: 9, lastName: '', firstName: '', age: 65 },
-  
-//];
-
-
+import { DataGrid } from "@mui/x-data-grid";
+import { Paper } from "@mui/material";
 
 export default function DataTable() {
+  // Exemplo de colunas
+  const columns = [
+    { field: "status", headerName: "Status", flex: 1, headerAlign: "center", align: "center" },
+    { field: "codigo de solicitacao", headerName: "Codigo de Solicitação", flex: 1, headerAlign: "center", align: "center" },
+    { field: "area", headerName: "Area (ha)", flex: 1, headerAlign: "center", align: "center" },
+    { field: "modulos fiscais", headerName: "Modulo Fiscais", flex: 1, headerAlign: "center", align: "center" },
+    { field: "municipio", headerName: "Município", flex: 1, headerAlign: "center", align: "center" },
+    { field: "viveiros", headerName: "Viveiros", flex: 1, headerAlign: "center", align: "center" },
+    { field: 'ordem', headerName: 'Ordem', headerAlign: 'center', align: 'center', width: 150 },
+   { field: 'prioridade', headerName: 'Prioridade', headerAlign: 'center', align: 'center', width: 150 },
+  { field: 'programa', headerName: 'Programa', headerAlign: 'center', align: 'center', width: 150 },
+  { field: 'tc', headerName: 'TC', headerAlign: 'center', align: 'center', width: 150 }
+  
+  ];
+
+  // Exemplo de dados (rows)
+  //const rows = [
+   //{ id: 1, status: "Ativo", area: 500, municipio: "São Paulo", viveiros: "3" },
+//{ id: 2, status: "Inativo", area: 300, municipio: "Rio de Janeiro", viveiros: "2" },
+    // Adicione mais linhas conforme necessário
+ // ];
+
   return (
-    
-    <Paper sx={{ display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 500,
-      width: '90%',
-      margin: ' auto',}}>
-     
+    <Paper
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: 500,
+        width: "90%",
+        margin: "auto",
+      }}
+    >
       <DataGrid
-     
-      sx={{}} 
-       // rows={rows}//
         columns={columns}
-              pageSizeOptions={[0]}
-              hideFooterPagination
-        
+        pageSizeOptions={[5]} // Define o tamanho de página (ajuste conforme necessário)
+        hideFooterPagination
+        sx={{
+          fontFamily: '"Montserrat", sans-serif',
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: "#f5f5f5",
+            fontWeight: "bold",// Cor de fundo do cabeçalho
+            color: "#ADAEA8", // Cor do texto do cabeçalho
+            textAlign: "center",
+          },
+          "& .MuiDataGrid-cell": {
+            textAlign: "center", // Centraliza o texto dentro das células
+          },
+        }}
       />
     </Paper>
   );

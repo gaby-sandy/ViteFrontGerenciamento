@@ -1,0 +1,115 @@
+.container {
+    width: 340px;
+    height: calc(100vh - var(--height-adjuster));
+  
+    background-color: var(--color-blue-light);
+  
+    position: fixed;
+    z-index: 4;
+    right: 0;
+    top: var(--height-adjuster);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .container[data-menu-is-open="true"] {
+    transform: translateX(0);
+  }
+  
+  .container > nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+  
+    overflow-y: auto;
+    max-height: calc(100vh - var(--height-adjuster) - 60px);
+  }
+  
+  .container > nav::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .container > nav::-webkit-scrollbar-thumb {
+    background-color: var(--color-blue-light);
+    border-radius: 10px;
+  }
+  
+  .container > nav::-webkit-scrollbar-track {
+    background-color: var(--color-blue);
+  }
+  
+  .container > nav > button {
+    margin-top: auto;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    margin-right: 0.625rem;
+  }
+  
+  .container > div {
+    width: 300px;
+    padding: 1.25rem;
+    background-color: var(--color-blue-light2);
+  
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .modules {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .modules .title-module {
+    width: 100%;
+    padding: 1.25rem;
+  
+    font-family: "Montserrat", sans-serif;
+    text-align: start;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-white);
+    background-color: var(--color-blue-light);
+    border: none;
+    border-bottom: 1px solid var(--color-white);
+  
+    cursor: pointer;
+  }
+  
+  .modules .title-module:hover {
+    background-color: var(--color-blue);
+  }
+  
+  .modules > li {
+    width: 100%;
+    padding: 1.25rem;
+  
+    font-family: "Montserrat", sans-serif;
+    text-align: start;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-white);
+  
+    background-color: var(--color-blue-light2);
+    border-bottom: 1px solid var(--color-white);
+  
+    cursor: pointer;
+  }
+  
+  .modules > li:hover {
+    background-color: var(--color-blue);
+  }
+  

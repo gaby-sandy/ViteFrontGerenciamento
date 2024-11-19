@@ -17,7 +17,7 @@ export default function KeyboardNavigation() {
     switch(value){
         
         case 1:
-          Navegação('/');
+          Navegação('/aprovação');
           break;
         
         case 2:

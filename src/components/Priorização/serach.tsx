@@ -186,19 +186,66 @@ const Autocomplete = React.forwardRef(function Autocomplete(
       )}
 
        
-       {showCarSearch && (
-        <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
-          <TextField id="outlined-car" size="small" type="search" label="CAR" variant="outlined" sx={{backgroundColor: 'white',marginLeft: '105px', }}/>
-          <Button variant="contained" size="small" sx={{ ml: 1 }}>Pesquisar</Button>
-        </Box>
-      )}
+{showCarSearch && (
+  <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
+    <TextField 
+      id="outlined-car" 
+      size="small" 
+      type="search" 
+      label="CAR" 
+      variant="outlined" 
+      sx={{
+        backgroundColor: 'white',
+        marginLeft: '105px',
+      }}
+    />
+    <Button 
+      variant="contained" 
+      size="small" 
+      sx={{ 
+        ml: 1,
+        backgroundColor: '#BD3D3A', // Cor do botão (azul padrão Material-UI)
+        color: 'white', // Cor do texto
+        '&:hover': {
+          backgroundColor: '#E29491', // Cor ao passar o mouse
+        },
+      }}
+    >
+      Pesquisar
+    </Button>
+  </Box>
+)}
+ {showCodigoSearch && (
+  <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
+    <TextField 
+      id="outlined-codigo" 
+      size="small" 
+      type="search" 
+      label="Código de Solicitação" 
+      variant="outlined" 
+      sx={{
+        backgroundColor: 'white',
+        marginLeft: '105px',
+      }}
+    />
+    <Button 
+      variant="contained" 
+      size="small" 
+      sx={{ 
+        ml: 1,
+        backgroundColor: '#BD3D3A', // Cor do botão (azul padrão Material-UI)
+        color: 'white', // Cor do texto no botão
+        '&:hover': {
+          backgroundColor: '#E29491', // Cor ao passar o mouse
+        },
+      }}
+    >
+      Pesquisar
+    </Button>
+  </Box>
+)}
 
-        {showCodigoSearch && (
-        <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1 }}>
-          <TextField id="outlined-codigo" size="small" type="search" label="Código de Solicitação" variant="outlined" sx={{backgroundColor: 'white',marginLeft: '105px',}}/>
-          <Button variant="contained" size="small" sx={{ ml: 1 }}>Pesquisar</Button>
-        </Box>
-      )}
+       
     </React.Fragment>
   );
 });
