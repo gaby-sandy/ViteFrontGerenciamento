@@ -1,11 +1,11 @@
-/* Reset e box model */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Garantir que o layout ocupe toda a tela */
+/*  isso é pra  garantir q o layout ocupe toda a tela */
 html, body {
   width: 100%;
   height: 100%;
@@ -26,17 +26,19 @@ main {
   flex: 1; /* O conteúdo principal ocupa o espaço restante */
   display: flex;
   flex-direction: column;
-  padding: 10px; /* Espaçamento interno */
-  margin-bottom: 100px; /* Diminuímos o espaço reservado para o footer */
+  padding: 10px;
+  margin-bottom: 100px; 
 }
 
-/* Estilização do container para limitar a largura */
+
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Adiciona espaçamento lateral para responsividade */
+  padding: 0 15px; 
 }
+
+
 
 /* Rodapé fixo */
 footer {
@@ -45,38 +47,38 @@ footer {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 15px 0; /* Reduzimos o padding do rodapé */
-  height: 130px; /* Altura reduzida para reduzir o espaço */
+  padding: 15px 0; 
+  height: 130px; 
 }
 
 /* Responsividade adicional */
 @media (max-width: 768px) {
   main {
-    padding: 5px; /* Reduz o padding em telas menores */
-    margin-bottom: 80px; /* Diminuímos mais o espaço para rodapé */
+    padding: 5px; 
+    margin-bottom: 80px; 
   }
 
   footer {
-    height: 100px; /* Altura menor para telas pequenas */
-    padding: 10px 0; /* Reduzimos o padding para economizar espaço */
+    height: 100px; 
+    padding: 10px 0; 
   }
 
   .container {
-    padding: 0 10px; /* Ajusta o espaçamento lateral */
+    padding: 0 10px; 
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 5px; /* Espaçamento ainda menor em telas muito pequenas */
+    padding: 0 5px; 
   }
 
   main {
-    margin-bottom: 60px; /* Menos espaço entre o main e o footer */
+    margin-bottom: 60px; 
   }
 
   footer {
-    height: 90px; /* Altura reduzida para dispositivos pequenos */
-    padding: 8px 0; /* Reduzimos ainda mais o padding para telas muito pequenas */
+    height: 90px; 
+    padding: 8px 0; 
   }
 }

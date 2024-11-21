@@ -11,6 +11,7 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Data from '../../data/data.json'
 
 const Autocomplete = React.forwardRef(function Autocomplete(
   props: UseAutocompleteProps<(typeof search)[number], false, false, false>,
@@ -116,8 +117,8 @@ const Autocomplete = React.forwardRef(function Autocomplete(
       </StyledAutocompleteRoot>
 
       {/* parte do mostrar a qauntiadade e o icone de filtro*/}
-      <div className="quantity-filter" style={{ display: 'flex', alignItems: 'center', marginLeft: '87vw', marginTop: '-40px', color: '#ADAEA8' }}>
-        <p style={{ fontFamily: " 'Montserrat', sans-serif", marginRight: '4px', fontSize: '1rem', }}>Quantidade: 2</p>
+      <div className="quantity-filter" style={{ display: 'flex', alignItems: 'center', marginLeft: '85vw', marginTop: '-40px', color: '#ADAEA8' }}>
+        <p style={{ fontFamily: " 'Montserrat', sans-serif", marginRight: '4px', fontSize: '1rem', }}>Quantidade: {Data.length}</p>
         <FilterAltIcon sx={{ fontSize: '2.2rem' }} /> 
       </div>
 
@@ -300,7 +301,7 @@ const StyledInput = styled('input')(
 `,
 );
 
-// Aqui definimos StyledClearIndicator como um botão
+// Aqui defini o StyledClearIndicator como um botão
 const StyledClearIndicator = styled('button')(
   ({ theme }) => `
   display: flex;

@@ -49,37 +49,38 @@ const columns: GridColDef<RowData>[] = [
     field: 'car',
     headerName: 'CAR',
     flex: 1,
-    editable: true,
+    editable: false,
+    
   },
   {
     field: 'codigoSolicitacao',
     headerName: 'Código de solicitação',
     flex: 1,
-    editable: true,
+    editable: false,
   },
   {
     field: 'area',
     headerName: 'Área (ha)',
     flex: 1,
-    editable: true,
+    editable: false,
   },
   {
     field: 'modulosFiscais',
     headerName: 'Módulos fiscais',
     flex: 1,
-    editable: true,
+    editable: false,
   },
   {
     field: 'municipio',
     headerName: 'Município',
     flex: 1,
-    editable: true,
+    editable: false,
   },
   {
     field: 'região',
     headerName: 'Região',
     flex: 1,
-    editable: true,
+    editable: false,
   },
   {
     field: 'anexo',
@@ -138,6 +139,12 @@ const DataGridDemo: React.FC = () => {
         '& .MuiDataGrid-row': {
           backgroundColor: '#FFFFFF',
         },
+        '& .MuiDataGrid-columnHeaderTitle': {
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 500,
+          color: '#ADAEA8', 
+          fontSize: '14px', 
+        },
       }}
     >
       <DataGrid
@@ -179,6 +186,9 @@ const DataGridDemo: React.FC = () => {
               '&:hover': {
                 backgroundColor: '#D9D9D9',
               },
+            },
+            '& .MuiPaginationItem-ellipsis': {
+              backgroundColor: 'transparent', 
             },
           }}
         />
