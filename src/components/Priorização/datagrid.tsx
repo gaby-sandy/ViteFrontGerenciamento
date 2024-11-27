@@ -1,34 +1,36 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import RoomIcon from '@mui/icons-material/Room';
+import Button from '@mui/material/Button';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { Link } from '@mui/material';
 import data from '../../data/data.json';
+import { TbClockHour5 } from "react-icons/tb";
 
 interface RowData {
   id: number;
   status: boolean;
-  tipo: string;
+  tipo:string;
   codigoSolicitacao: number;
   area: number;
   modulosFiscais: number;
   municipio: string;
-  regional: string;
-  pdfUrl: string;
-  mapUrl: string;
-  
+  viveiros:string
+  ordem: string;
+  prioridade: string;
+  nota:number;
+  programa:string;
+  tc:string
+ 
 }
 
 {/* Essa parte é do status do datagrid, entender melhor o fucinoamento */}
 const columns: GridColDef<RowData>[] = [
   {
     field: 'status',
-    headerAlign: 'center',
     headerName: 'Status',
+    headerAlign: 'center',
     flex: 1,
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <CheckCircleOutlineIcon
@@ -49,30 +51,33 @@ const columns: GridColDef<RowData>[] = [
   },
   {
     field: 'tipo',
-    headerAlign: 'center',
     headerName: 'Tipo',
+    headerAlign: 'center',
     flex: 1,
     editable: false,
     
   },
   {
     field: 'codigoSolicitacao',
-    headerName: 'Código de solicitação',
+    headerName: 'Código de Solicitação',
     headerAlign: 'center',
     flex: 1,
     editable: false,
+    
   },
+  
   {
     field: 'area',
-    headerAlign: 'center',
     headerName: 'Área (ha)',
+    headerAlign: 'center',
     flex: 1,
     editable: false,
   },
+  
   {
     field: 'modulosFiscais',
-    headerAlign: 'center',
     headerName: 'Módulos fiscais',
+    headerAlign: 'center',
     flex: 1,
     editable: false,
   },
@@ -84,41 +89,51 @@ const columns: GridColDef<RowData>[] = [
     editable: false,
   },
   {
-    field: 'regional',
-    headerName: 'Regional',
+    field: 'viveiros',
+    headerName: 'Viveiros',
     headerAlign: 'center',
     flex: 1,
     editable: false,
   },
   {
-    field: 'anexo',
-    headerName: 'Anexo',
+    field: 'ordem',
+    headerName: 'Ordem',
+    headerAlign: 'center',
+    flex: 1,
+    editable: false,
+  },
+  {
+    field: 'prioridade',
+    headerName: 'Prioridade',
+    headerAlign: 'center',
+    flex: 1,
+    editable: false,
+  },
+  {
+    field: 'nota',
+    headerName: 'Nota',
+    headerAlign: 'center',
+    flex: 1,
+    editable: false,
+  },
+  {
+    field: 'programa',
+    headerName: 'Programa',
+    headerAlign: 'center',
+    flex: 1,
+    editable: false,
+  },
+  {
+   field: 'tc',
+    headerName: 'TC',
     headerAlign: 'center',
     flex: 1,
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <div style={{ display: 'flex', gap: '8px' }}>
-        <Link href={params.row.pdfUrl} target="_blank" rel="noopener noreferrer">
-        <PictureAsPdfIcon
-        sx={{
-            fontSize: { xs: '18px', sm: '25px' },
-            color: '#ADAEA8',
-            '&:hover': {
-            color: '#901C19', // cor ao passar o mouse
-           },
-          }}
-/>
-        </Link>
-        <Link href={params.row.mapUrl} target="_blank" rel="noopener noreferrer">
-        <RoomIcon
-          sx={{
-            fontSize: { xs: '18px', sm: '25px' },
-            color: '#ADAEA8',
-            '&:hover': {
-              color: '#901C19', // cor ao passar o mouse
-            },
-          }}
-        />
-        </Link>
+     <Button variant="contained" size="small" sx={{ ml: 1, backgroundColor: '#BD3D3A', color: 'white',fontFamily: 'Montserrat, sans-serif',width: '82px',borderRadius: '9px',
+  fontWeight: 'bold','&:hover': {
+              backgroundColor: '#E29491',}}}>ABRIR</Button>
+          
       </div>
     ),
   },
@@ -132,12 +147,10 @@ const DataGridDemo: React.FC = () => {
     setPage(value);
   };
 
-
-
-  
   return (
     <Box
     sx={{
+        
       width: '100%',
       height: { xs: 'calc(100vh - 150px)', sm: 'calc(100vh - 170px)' },
       maxWidth: '100%',
@@ -146,38 +159,31 @@ const DataGridDemo: React.FC = () => {
       boxSizing: 'border-box',
       marginBottom: { xs: '40px', sm: '60px' },
       '& .MuiDataGrid-cell': {
+        fontSize: { xs: '12px', sm: '14px' },
         textAlign: 'center', // Centraliza o texto dentro das células
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor:'#FFFFFF',
-            fontFamily: 'Montserrat, sans-serif',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center', // Centraliza verticalmente o texto das células
+      },
+      '& .MuiDataGrid-row': {
+        backgroundColor: '#FFFFFF',
       },
       '& .MuiDataGrid-columnHeaderTitle': {
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 500,
         color: '#ADAEA8',
         fontSize: '14px',
-        display: 'flex', // Flexbox também para o cabeçalho
-        justifyContent: 'center', // Centraliza horizontalmente
-        alignItems: 'center', // Alinha verticalmente
-        textAlign: 'center', // Garantia extra para texto no centro
+        textAlign: 'center', // Centraliza o texto no cabeçalho
       },
       '& .MuiDataGrid-columnHeaders': {
-        display: 'flex', // Alinhamento para todo o cabeçalho
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      '& .MuiDataGrid-root': {
-        '& .MuiDataGrid-columnHeader': {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-        },
+        display: 'center',
+        justifyContent: 'center', // Alinha horizontalmente os títulos do cabeçalho
+        alignItems: 'center', // Centraliza verticalmente os títulos do cabeçalho
       },
     }}
   >
+
+
     <DataGrid
       rows={data.slice((page - 1) * pageSize, page * pageSize)} // Usando os dados do JSON
       columns={columns}
@@ -185,7 +191,7 @@ const DataGridDemo: React.FC = () => {
       disableRowSelectionOnClick
       autoHeight
       hideFooterPagination
-       sx={{
+      sx={{
         '& .MuiDataGrid-cell': {
           textAlign: 'center', // Centraliza o texto dentro das células
           display: 'flex',
@@ -202,8 +208,6 @@ const DataGridDemo: React.FC = () => {
       }}
       disableColumnResize
     />
- 
-
 
       {/*Aqui a nova paginação */}
       <Stack spacing={2} sx={{ alignItems: 'center', mt: 2 }}>
@@ -238,7 +242,6 @@ const DataGridDemo: React.FC = () => {
               backgroundColor: 'transparent', 
             },
           }}
-          
         />
       </Stack>
     </Box>

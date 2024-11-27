@@ -6,9 +6,10 @@
     url(../../assets/images/background-home.jpeg);
   background-position: center;
   background-size: cover;
+  background-position: 60% 210%;
   width: 100%;
   height: 150px;
-  padding: 1rem;
+  padding: 5.8125rem 0 4.6875rem;
   z-index: 1000;
   margin-top: 40px;
 }
@@ -21,12 +22,12 @@
 }
 
 .ief, .vale, .faped {
-  max-width: 95px;
+  max-width: 150px;
   height: auto;
 }
 
 .ufsj {
-  max-width: 60px;
+  max-width: 75px;
 }
 
 /* Responsividade para telas de 768px */

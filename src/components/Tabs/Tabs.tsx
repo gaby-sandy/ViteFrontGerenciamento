@@ -58,7 +58,7 @@ export default function KeyboardNavigation() {
 }
 
 const Tab = styled(BaseTab)`
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: black;
   cursor: pointer;
   font-size: 0.9rem;

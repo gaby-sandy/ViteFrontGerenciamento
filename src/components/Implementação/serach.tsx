@@ -170,7 +170,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showProcessMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [89, -641] } }]}>
+          modifiers={[{ name: 'offset', options: { offset: [89, -642] } }]}>
           <StyledListbox>
             {process.map((fase, index) => (
               <StyledOption key={index}>{fase.label}</StyledOption>
@@ -194,21 +194,21 @@ const Autocomplete = React.forwardRef(function Autocomplete(
       )}
          {/*  Aqui é os negocios de pesquisar (CAr e Codigo de solicitação) */ }
       {showCarSearch && (
-      <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
+       <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
 
-        <TextField 
-          id="outlined-car" 
-          size="small" 
-          type="search" 
-          label="CAR " 
-          variant="outlined" 
-          sx={{
-            backgroundColor: 'white',
-            marginLeft: '450px',
-          
-            
-          }}
-        />
+       <TextField 
+         id="outlined-car" 
+         size="small" 
+         type="search" 
+         label="CAR" 
+         variant="outlined" 
+         sx={{
+           backgroundColor: 'white',
+           marginLeft: '450px',
+         
+           
+         }}
+       />
         <Button 
           variant="contained" 
           size="small" 
@@ -227,17 +227,19 @@ const Autocomplete = React.forwardRef(function Autocomplete(
       )}
 
       {showCodigoSearch && (
-     <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
+        <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
+
         <TextField 
-          id="outlined-codigo" 
+          id="outlined-car" 
           size="small" 
           type="search" 
           label="Código de Solicitação" 
           variant="outlined" 
           sx={{
-            
             backgroundColor: 'white',
             marginLeft: '450px',
+          
+            
           }}
         />
         <Button 
@@ -249,7 +251,6 @@ const Autocomplete = React.forwardRef(function Autocomplete(
             color: 'white', // Cor do texto no botão
             '&:hover': {
               backgroundColor: '#E29491', // Cor ao passar o mouse
-              
             },
           }}
         >
@@ -337,7 +338,6 @@ font-family: "Montserrat", sans-serif;
 
 const StyledInput = styled('input')(
   ({ theme }) => `
-  
   font-size: 0.875rem;
   font-family: inherit;
   font-weight: 400;
@@ -394,7 +394,7 @@ const StyledListbox = styled('ul')(
 font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
-  padding: 3px;
+  padding: 4px;
   margin: 12px 0;
   min-width: 320px;
   border-radius: 12px;

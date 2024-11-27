@@ -1,9 +1,13 @@
+import Search from '../components/Priorização/serach';
+import DataGridDemo from '../components/Priorização/datagrid';
 
-
-export default function Priorizacao(){
-    return(
+export default function Priorização(){
+    return (
         <div>
-            <p>priorização</p>
+          <div>
+            <Search />
+          </div>
+          <DataGridDemo />
         </div>
-    )
+      );
 }

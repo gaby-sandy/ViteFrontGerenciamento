@@ -37,11 +37,14 @@ body {
 
 
 h1 {
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 500;
+   font-family:  'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 100;
   color: #333;
-  font-size: 2vw;
+  font-size: 35px;
   margin: 0;
+  margin-right: 500px;
+  margin-left: 8px;
+  margin-bottom: 30px;
 }
 
 /* Ajustes de responsividade p tela de difrneste tamanhos  */
