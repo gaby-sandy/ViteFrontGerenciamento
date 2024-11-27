@@ -13,7 +13,7 @@ function App() {
         <NavBar />
         <main className="content">
           <div className="header-container">
-            <h1>Gerenciamento do PRA-MG</h1>
+            <h1>Gerenciamento Florescer</h1>
             <Tabs />
           </div>
 

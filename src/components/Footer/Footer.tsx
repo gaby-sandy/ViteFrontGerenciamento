@@ -9,13 +9,26 @@ const Footer = () => {
   return (
     <footer className={styles.container}>
       <div className={styles.content}>
-        <img src={ief} alt="Logo da ief" className={styles.ief} />
-        <img src={vale} alt="Logo da vale branca" className={styles.vale} />
-        <img src={ufsj} alt="Logo da UFSJ" className={styles.ufsj} />
+      <a href="https://www.ief.mg.gov.br/" target="_blank" rel="noopener noreferrer">
+  <img src={ief} alt="Logo da ief" className={styles.ief} />
+</a>
+<a href="https://www.vale.com/pt/home" target="_blank" rel="noopener noreferrer">
+<img src={vale} alt="Logo da vale branca" className={styles.vale} />
+</a>
+<a href="https://www.ufsj.edu.br/" target="_blank" rel="noopener noreferrer">
+<img src={ufsj} alt="Logo da UFSJ" className={styles.ufsj} />
+</a>
+<a href="https://faped.org.br/" target="_blank" rel="noopener noreferrer">
         <img src={faped} alt="Logo da FAPED" className={styles.faped} />
+        </a>
       </div>
     </footer>
   );
 };
 
 export default Footer; 
+
+
+
+
+
