@@ -28,6 +28,7 @@ const columns: GridColDef<RowData>[] = [
     field: 'status',
     headerName: 'Status',
     flex: 1,
+    headerAlign: 'center',
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <CheckCircleOutlineIcon
         onClick={() => {    {/* talvez criar uma função para o click*/}
@@ -50,6 +51,7 @@ const columns: GridColDef<RowData>[] = [
     headerName: 'CAR',
     flex: 1,
     editable: false,
+    headerAlign: 'center',
     
   },
   {
