@@ -1,5 +1,5 @@
-import Search from '../components/Implementação/serach';
-import DataGridDemo from '../components/Implementação/datagrid';
+import Search from '../components/Implantacao/serach';
+import DataGridDemo from '../components/Implantacao/datagrid';
 
 export default function Implantacao(){
     return(

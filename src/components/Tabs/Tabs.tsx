@@ -96,7 +96,7 @@ const TabsList = styled(BaseTabsList)`
   justify-content: flex-start; /* Alinha à esquerda */
   gap: 0px;
   padding: 0;
-  margin-left: 20px; /* Move as abas para a direita */
+  margin-left: -200px; /* Move as abas para a direita */
   margin-right: 40px;
   flex-wrap: nowrap;
 

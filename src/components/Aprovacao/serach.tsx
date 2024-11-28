@@ -48,7 +48,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
   const [showMunicipiosMenu, setShowMunicipiosMenu] = React.useState(false);
   const [municipios, setMunicipios] = React.useState<{ label: string }[]>([]);
 
-  const [showCarSearch, setShowCarSearch] = React.useState(false);
+  
   const [showCodigoSearch, setShowCodigoSearch] = React.useState(false);
 
 
@@ -85,7 +85,6 @@ const Autocomplete = React.forwardRef(function Autocomplete(
     setShowRegionalMenu(option === 'Pesquisa por regional' ? !showRegionalMenu : false);
     setShowProcessMenu(option === 'Pesquisa por Fase de processo' ? !showProcessMenu : false);
     setShowMunicipiosMenu(option === 'Pesquisa por municipio' ? !showMunicipiosMenu : false);
-    setShowCarSearch(option === 'Pesquisa por CAR');
     setShowCodigoSearch(option === 'Pesquisa por codigo de solicitação');
   };
 
@@ -170,7 +169,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           open={showProcessMenu} 
           anchorEl={anchorEl} 
           placement="left-start" 
-          modifiers={[{ name: 'offset', options: { offset: [89, -641] } }]}>
+          modifiers={[{ name: 'offset', options: { offset: [56, -641] } }]}>
           <StyledListbox>
             {process.map((fase, index) => (
               <StyledOption key={index}>{fase.label}</StyledOption>
@@ -193,39 +192,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         </Popper>
       )}
          {/*  Aqui é os negocios de pesquisar (CAr e Codigo de solicitação) */ }
-      {showCarSearch && (
-      <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
-
-        <TextField 
-          id="outlined-car" 
-          size="small" 
-          type="search" 
-          label="CAR " 
-          variant="outlined" 
-          sx={{
-            backgroundColor: 'white',
-            marginLeft: '450px',
-          
-            
-          }}
-        />
-        <Button 
-          variant="contained" 
-          size="small" 
-          sx={{ 
-            ml: 1,
-            backgroundColor: '#BD3D3A', // Cor do botão (azul padrão Material-UI)
-            color: 'white', // Cor do texto
-            '&:hover': {
-              backgroundColor: '#E29491', // Cor ao passar o mouse
-            },
-          }}
-        >
-          Pesquisar
-        </Button>
-      </Box>
-      )}
-
+    
       {showCodigoSearch && (
      <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
         <TextField 
@@ -471,7 +438,6 @@ const search = [
   { label: 'Pesquisa por regional' },
   { label: 'Pesquisa por municipio' },
   { label: 'Pesquisa por codigo de solicitação' },
-  { label: 'Pesquisa por CAR' },
   { label: 'Pesquisa por Fase de processo' },
 ];
 

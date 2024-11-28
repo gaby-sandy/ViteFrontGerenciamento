@@ -193,14 +193,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         </Popper>
       )}
          {/*  Aqui é os negocios de pesquisar (CAr e Codigo de solicitação) */ }
-      {showViveirosSearch && (
-              <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
-                
-
-          <TextField id="outlined-car" size="small" type="search" label="Viveiros" variant="outlined" sx={{ backgroundColor: 'white', marginLeft: '450px', boxShadow: (theme) => `0px 2px 4px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'}`}} />
-          <Button variant="contained" size="small" sx={{ ml: 1, backgroundColor: '#BD3D3A' }}>Pesquisar</Button>
-        </Box>
-      )}
+  
 
       {showCodigoSearch && (
               <Box component="form" sx={{ display: 'flex', alignItems: 'center', m: 1, marginTop: '-42px' }}>
@@ -421,7 +414,6 @@ const search = [
   { label: 'Pesquisa por regional' },
   { label: 'Pesquisa por municipio' },
   { label: 'Pesquisa por codigo de solicitação' },
-  { label: 'Pesquisa por Viveiros' },
   { label: 'Pesquisa por Fase de processo' },
 ];
 

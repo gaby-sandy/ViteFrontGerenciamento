@@ -7,36 +7,34 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { Link } from '@mui/material';
-import data from '../../data/data.json';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 interface RowData {
   id: number;
-  status: boolean;
+  status: number;
   tipo: string;
-  codigoSolicitacao: number;
+  codigo_solicitacao: number;
   area: number;
-  modulosFiscais: number;
+  modulos_fiscais: number;
   municipio: string;
   regional: string;
-  pdfUrl: string;
-  mapUrl: string;
-  
+  pdf: string;
+  localizacao: string;
 }
 
-{/* Essa parte é do status do datagrid, entender melhor o fucinoamento */}
 const columns: GridColDef<RowData>[] = [
   {
     field: 'status',
     headerAlign: 'center',
     headerName: 'Status',
     flex: 1,
-    headerAlign: 'center',
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <CheckCircleOutlineIcon
-        onClick={() => {    {/* talvez criar uma função para o click*/}
-          params.api.setRowData((oldRows) =>
-            oldRows.map((row) =>
-              row.id === params.row.id ? { ...row, status: !row.status } : row
+        onClick={() => {
+          setRows((prevRows) =>
+            prevRows.map((row) =>
+              row.id === params.row.id ? { ...row, status: row.status ? 0 : 1 } : row
             )
           );
         }}
@@ -50,15 +48,13 @@ const columns: GridColDef<RowData>[] = [
   },
   {
     field: 'tipo',
-    headerAlign: 'center',
     headerName: 'Tipo',
     flex: 1,
     editable: false,
     headerAlign: 'center',
-    
   },
   {
-    field: 'codigoSolicitacao',
+    field: 'codigo_solicitacao',
     headerName: 'Código de solicitação',
     headerAlign: 'center',
     flex: 1,
@@ -72,7 +68,7 @@ const columns: GridColDef<RowData>[] = [
     editable: false,
   },
   {
-    field: 'modulosFiscais',
+    field: 'modulos_fiscais',
     headerAlign: 'center',
     headerName: 'Módulos fiscais',
     flex: 1,
@@ -99,28 +95,28 @@ const columns: GridColDef<RowData>[] = [
     flex: 1,
     renderCell: (params: GridRenderCellParams<RowData>) => (
       <div style={{ display: 'flex', gap: '8px' }}>
-        <Link href={params.row.pdfUrl} target="_blank" rel="noopener noreferrer">
-        <PictureAsPdfIcon
-        sx={{
-            fontSize: { xs: '18px', sm: '25px' },
-            color: '#ADAEA8',
-            '&:hover': {
-            color: '#901C19', // cor ao passar o mouse
-           },
-          }}
-/>
-        </Link>
-        <Link href={params.row.mapUrl} target="_blank" rel="noopener noreferrer">
-        <RoomIcon
-          sx={{
-            fontSize: { xs: '18px', sm: '25px' },
-            color: '#ADAEA8',
-            '&:hover': {
-              color: '#901C19', // cor ao passar o mouse
-            },
-          }}
-        />
-        </Link>
+        {params.row.localizacao && (
+          <Link href={params.row.localizacao} target="_blank" rel="noopener noreferrer">
+            <RoomIcon
+              sx={{
+                fontSize: { xs: '18px', sm: '25px' },
+                color: '#ADAEA8',
+                '&:hover': { color: '#901C19' },
+              }}
+            />
+          </Link>
+        )}
+        {params.row.pdf && (
+          <Link href={params.row.pdf} target="_blank" rel="noopener noreferrer">
+            <PictureAsPdfIcon
+              sx={{
+                fontSize: { xs: '18px', sm: '25px' },
+                color: '#ADAEA8',
+                '&:hover': { color: '#901C19' },
+              }}
+            />
+          </Link>
+        )}
       </div>
     ),
   },
@@ -128,89 +124,109 @@ const columns: GridColDef<RowData>[] = [
 
 const DataGridDemo: React.FC = () => {
   const [page, setPage] = React.useState(1);
-  const pageSize = 7; {/* quantidade de dados que vai aparecer por pagina*/}
+  const pageSize = 7;
+  const [rows, setRows] = useState<RowData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [total, setTotal] = useState<number>(0);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        console.log('Fazendo requisição para a API...');
+        const response = await axios.get<{ data: RowData[], total: number }>('http://localhost:3000/aprovacao', {
+          params: { page, pageSize },
+        });
+        console.log('Resposta recebida:', response.data);
+        setRows(response.data.data);
+        setTotal(response.data.total);
+      } catch (error) {
+        console.error('Erro ao buscar os dados:', error);
+        alert('Erro ao carregar os dados.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [page, pageSize]);
 
-
-  
   return (
     <Box
-    sx={{
-      width: '100%',
-      height: { xs: 'calc(100vh - 150px)', sm: 'calc(100vh - 170px)' },
-      maxWidth: '100%',
-      padding: { xs: '0 10px', sm: '0 20px' },
-      marginTop: { xs: '20px', sm: '40px' },
-      boxSizing: 'border-box',
-      marginBottom: { xs: '40px', sm: '60px' },
-      '& .MuiDataGrid-cell': {
-        textAlign: 'center', // Centraliza o texto dentro das células
+      sx={{
+        width: '100%',
+        height: { xs: 'calc(100vh - 150px)', sm: 'calc(100vh - 170px)' },
+        maxWidth: '100%',
+        padding: { xs: '0 10px', sm: '0 20px' },
+        marginTop: { xs: '20px', sm: '40px' },
+        boxSizing: 'border-box',
+        marginBottom: { xs: '40px', sm: '60px' },
+        '& .MuiDataGrid-cell': {
+          textAlign: 'center',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#FFFFFF',
+          fontFamily: 'Montserrat, sans-serif',
+        },
+        '& .MuiDataGrid-columnHeaderTitle': {
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 500,
+          color: '#ADAEA8',
+          fontSize: '14px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+        },
+        '& .MuiDataGrid-columnHeaders': {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        '& .MuiDataGrid-root': {
+          '& .MuiDataGrid-columnHeader': {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor:'#FFFFFF',
-            fontFamily: 'Montserrat, sans-serif',
-      },
-      '& .MuiDataGrid-columnHeaderTitle': {
-        fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 500,
-        color: '#ADAEA8',
-        fontSize: '14px',
-        display: 'flex', // Flexbox também para o cabeçalho
-        justifyContent: 'center', // Centraliza horizontalmente
-        alignItems: 'center', // Alinha verticalmente
-        textAlign: 'center', // Garantia extra para texto no centro
-      },
-      '& .MuiDataGrid-columnHeaders': {
-        display: 'flex', // Alinhamento para todo o cabeçalho
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      '& .MuiDataGrid-root': {
-        '& .MuiDataGrid-columnHeader': {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-        },
-      },
-    }}
-  >
-    <DataGrid
-      rows={data.slice((page - 1) * pageSize, page * pageSize)} // Usando os dados do JSON
-      columns={columns}
-      pageSizeOptions={[5]}
-      disableRowSelectionOnClick
-      autoHeight
-      hideFooterPagination
-       sx={{
-        '& .MuiDataGrid-cell': {
-          textAlign: 'center', // Centraliza o texto dentro das células
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor:'#FFFFFF',
-          fontFamily: 'Montserrat, sans-serif',
-        },
-        '& .MuiDataGrid-columnHeaders': {
-          textAlign: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
+            textAlign: 'center',
+          },
         },
       }}
-      disableColumnResize
-    />
- 
+    >
+      <DataGrid
+        rows={rows}
+        loading={loading}
+        columns={columns}
+        rowCount={total}
+        pageSize={pageSize}
+        disableRowSelectionOnClick
+        autoHeight
+        hideFooterPagination
+        sx={{
+          '& .MuiDataGrid-cell': {
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#FFFFFF',
+            fontFamily: 'Montserrat, sans-serif',
+          },
+          '& .MuiDataGrid-columnHeaders': {
+            textAlign: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        }}
+        disableColumnResize
+      />
 
-
-      {/*Aqui a nova paginação */}
       <Stack spacing={2} sx={{ alignItems: 'center', mt: 2 }}>
         <Pagination
-          count={Math.ceil(data.length / pageSize)}
+          count={Math.ceil(total / pageSize)}
           page={page}
           onChange={handlePageChange}
           shape="rounded"
@@ -237,10 +253,9 @@ const DataGridDemo: React.FC = () => {
               },
             },
             '& .MuiPaginationItem-ellipsis': {
-              backgroundColor: 'transparent', 
+              backgroundColor: 'transparent',
             },
           }}
-          
         />
       </Stack>
     </Box>

@@ -6,7 +6,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import data from '../../data/data.json';
-import { TbClockHour5 } from "react-icons/tb";
+
 
 interface RowData {
   id: number;
@@ -16,11 +16,10 @@ interface RowData {
   area: number;
   modulosFiscais: number;
   municipio: string;
-  viveiros:string
+  regional: string;
   ordem: string;
   prioridade: string;
   nota:number;
-  programa:string;
   tc:string
  
 }
@@ -73,14 +72,6 @@ const columns: GridColDef<RowData>[] = [
     flex: 1,
     editable: false,
   },
-  
-  {
-    field: 'modulosFiscais',
-    headerName: 'Módulos fiscais',
-    headerAlign: 'center',
-    flex: 1,
-    editable: false,
-  },
   {
     field: 'municipio',
     headerName: 'Município',
@@ -88,13 +79,15 @@ const columns: GridColDef<RowData>[] = [
     flex: 1,
     editable: false,
   },
+
   {
-    field: 'viveiros',
-    headerName: 'Viveiros',
+    field: 'regional',
+    headerName: 'Regional',
     headerAlign: 'center',
     flex: 1,
     editable: false,
   },
+
   {
     field: 'ordem',
     headerName: 'Ordem',
@@ -112,13 +105,6 @@ const columns: GridColDef<RowData>[] = [
   {
     field: 'nota',
     headerName: 'Nota',
-    headerAlign: 'center',
-    flex: 1,
-    editable: false,
-  },
-  {
-    field: 'programa',
-    headerName: 'Programa',
     headerAlign: 'center',
     flex: 1,
     editable: false,

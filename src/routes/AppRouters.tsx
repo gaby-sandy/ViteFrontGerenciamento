@@ -15,7 +15,7 @@ export default function AppRoutes() {
             <Route path="/priorizacao" element={<Priorizacao/>} />
             <Route path="/implantacao" element={<Implantacao/>} />
             <Route path="/monitoramento" element={<Monitoramento/>} />
-            <Route path="/inteligencia de dados" element={<Inteligencia/>} />
+            <Route path="/inteligencia-de-dados" element={<Inteligencia/>} />
         </Routes> 
     )
 }
