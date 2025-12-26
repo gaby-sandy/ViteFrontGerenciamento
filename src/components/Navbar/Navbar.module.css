@@ -17,7 +17,6 @@
     right: 0;
   }
   
-  /* Estilo para os ícones no cabeçalho */
   .iconContainer svg {
     color: white; /* Cor branca para os ícones */
     cursor: pointer;
@@ -88,12 +87,10 @@
     z-index: 101;
 }
   
-  /* Quando a Sidebar estiver aberta */
   .sidebar.open {
     transform: translateX(0); /* Mostra a Sidebar ao abrir */
   }
   
-  /* Estilo para os itens da sidebar */
   .sidebar ul {
     list-style: none;
     padding: 0;
@@ -110,7 +107,8 @@
     transition: background 0.3s ease;
   }
   
-  .sidebar ul li a:hover {
-    background-color: #7a955a;
+  .sidebar ul :hover {
+    background-color: #ecf0f1;
+    color: black;
   }
   

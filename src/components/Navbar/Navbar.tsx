@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './Navbar.module.css';
 import logo from "../../assets/logo/logo-RPA.png";
 import { TiHome } from "react-icons/ti";
+import { Link } from 'react-router-dom';
 
 // Definir a interface para o estado do componente
 interface NavbarProps {}
@@ -26,13 +27,11 @@ const Navbar: React.FC<NavbarProps> = () => {
         <TiHome size={27} />
       </div>
 
-      <p style={{ color: "white", marginLeft: '800px', fontSize: '15px', fontWeight: 600 }}>
+      <p style={{ position:'sticky', color: "white", marginLeft: 'auto',marginRight:'100px', fontSize: '15px', fontWeight: 600, zIndex: 1000 }}>
         Nome do Usuário
       </p>
 
-      {/* Botão de Menu Hamburger */}
       <div className={styles.iconContainer} onClick={toggleMenu}>
-        {/* Ícone do hambúrguer */}
         <div className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}>
           <span className={styles.line}></span>
           <span className={styles.line}></span>
@@ -40,10 +39,9 @@ const Navbar: React.FC<NavbarProps> = () => {
         </div>
       </div>
 
-      {/* Menu Sidebar */}
-      <nav className={`${styles.sidebar} ${isMenuOpen ? styles.open : ''}`}>
+      <nav className={`${styles.sidebar} ${isMenuOpen ? styles.open : ''}`} >
         <ul>
-          <li><a>Home</a></li>
+          <li><a onClick={}>Home</a></li>
           <li><a>Sobre</a></li>
           <li><a>Serviços</a></li>
           <li><a>Contato</a></li>
