@@ -22,14 +22,11 @@ import GraficoTotalPrograma from '../components/Charts/Bar1/Bar1';
 import AreaProtegida from '../components/Charts/Bar2/Bar2';
 import { FaDatabase } from "react-icons/fa6";
 import Buttomexport from '../components/Buttom/Buttomexport/Buttom';
-
+import { useEffect } from 'react';
 import Datagrid from '../components/Datagrid/Datagrid';
 import Footer from '../components/Footer/index';
 import jsonData from '../data/dados.json';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './Home';
-import Implementação from './implementacao';
-
+import { useCallback } from 'react';
 interface JsonDataItem {
   data_projeto: string;
   regional: string;
@@ -71,7 +68,7 @@ function App() {
   
  
 
-  const filterData = React.useCallback(() => {
+  const filterData = useCallback(() => {
     let newFilteredData = jsonData;
 
     // Filtro por anos
@@ -170,7 +167,7 @@ function App() {
     selectedParceiros
   ]);
 
-  useEffect => {
+  useEffect(() => {
     filterData();
   }, [
     filterData, 
@@ -203,14 +200,7 @@ function App() {
 
   return (
     <div className="app">
-      <BrowserRouter>
-      <Navbar />
       
-      <Routes>
-        <Route path='/home' element={<HomePage/>}/>
-        <Route path='/implementacao' element={<Implementação/>}/>
-
-      </Routes>
 
       
 
@@ -271,7 +261,7 @@ function App() {
           <Datagrid filteredData={filteredData} />
         </div>
       </div>
-      </BrowserRouter>
+      
 
       <Footer />
     </div>

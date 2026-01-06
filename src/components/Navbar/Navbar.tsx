@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Navbar.module.css';
 import logo from "../../assets/logo/logo-RPA.png";
 import { TiHome } from "react-icons/ti";
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 
