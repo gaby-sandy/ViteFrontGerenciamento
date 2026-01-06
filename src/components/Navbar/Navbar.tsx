@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import styles from './Navbar.module.css';
 import logo from "../../assets/logo/logo-RPA.png";
 import { TiHome } from "react-icons/ti";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-// Definir a interface para o estado do componente
-interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = () => {
+
+const Navbar  = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false); // Estado tipado como booleano
 
   // Função para alternar o menu
@@ -41,10 +40,9 @@ const Navbar: React.FC<NavbarProps> = () => {
 
       <nav className={`${styles.sidebar} ${isMenuOpen ? styles.open : ''}`} >
         <ul>
-          <li><a onClick={}>Home</a></li>
-          <li><a>Sobre</a></li>
-          <li><a>Serviços</a></li>
-          <li><a>Contato</a></li>
+        <li><NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Home</NavLink> </li>
+          <li><NavLink to="/implementacao" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Implementação</NavLink></li>
+          
         </ul>
       </nav>
     </div>

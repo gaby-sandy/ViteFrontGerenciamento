@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import { MdFilterAlt } from "react-icons/md";
-import Navbar from "./components/Navbar/Navbar";
-import Boxmonitoramento from './components/Monitoramento/Monitoramento';
-import Ano from './components/Ano/Ano';
-import Regional from './components/Regional/Regional';
-import Municipio from './components/Municipio/Municipio';
-import Areas from './components/Areas-protegidas/Areas';
-import Parceiros from './components/Parceiros/Parceiros';
-import Programa from './components/Programa/Programa';
-import Plantio from './components/Plantio/Plantio';
-import Monitor from './components/Monitor/Monitoramento';
-import Indicadores from './components/Indicadores/Indicadores';
-import Conformidade from './components/Conformidade/Conformidade';
-import Termo from './components/Termo/Termo';
-import Area from './components/Area/Area';
-import Modulo from './components/Modulos/Modulos';
-import Buttom from './components/Buttom/Buttomclear/Buttom';
-import GraficoTermo from './components/Charts/Pie/Pie';
-import GraficoTipoRecomposição from './components/Charts/Pie 2/Pie2';
-import GraficoTotalPrograma from './components/Charts/Bar1/Bar1';
-import AreaProtegida from './components/Charts/Bar2/Bar2';
+import Navbar from "../components/Navbar/Navbar";
+import Boxmonitoramento from '../components/Monitoramento/Monitoramento';
+import Ano from '../components/Ano/Ano';
+import Regional from '../components/Regional/Regional';
+import Municipio from '../components/Municipio/Municipio';
+import Areas from '../components/Areas-protegidas/Areas';
+import Parceiros from '../components/Parceiros/Parceiros';
+import Programa from '../components/Programa/Programa';
+import Plantio from '../components/Plantio/Plantio';
+import Monitor from '../components/Monitor/Monitoramento';
+import Indicadores from '../components/Indicadores/Indicadores';
+import Conformidade from '../components/Conformidade/Conformidade';
+import Termo from '../components/Termo/Termo';
+import Area from '../components/Area/Area';
+import Modulo from '../components/Modulos/Modulos';
+import Buttom from '../components/Buttom/Buttomclear/Buttom';
+import GraficoTermo from '../components/Charts/Pie/Pie';
+import GraficoTipoRecomposição from '../components/Charts/Pie 2/Pie2';
+import GraficoTotalPrograma from '../components/Charts/Bar1/Bar1';
+import AreaProtegida from '../components/Charts/Bar2/Bar2';
 import { FaDatabase } from "react-icons/fa6";
-import Buttomexport from './components/Buttom/Buttomexport/Buttom';
+import Buttomexport from '../components/Buttom/Buttomexport/Buttom';
 
-import Datagrid from './components/Datagrid/Datagrid';
-import Footer from './components/Footer/index';
-import jsonData from './data/dados.json';
+import Datagrid from '../components/Datagrid/Datagrid';
+import Footer from '../components/Footer/index';
+import jsonData from '../data/dados.json';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/Home';
-import Implementação from './pages/implementacao';
+import HomePage from './Home';
+import Implementação from './implementacao';
 
 interface JsonDataItem {
   data_projeto: string;
@@ -49,7 +49,7 @@ interface JsonDataItem {
 }
 
 function App() {
-  
+  const [switchMode, setSwitchMode] = useState<string>('false')
   const [filteredData, setFilteredData] = useState<JsonDataItem[]>([]);
   const [selectedYears, setSelectedYears] = React.useState<string[]>([]);
   const [selectedRegionals, setSelectedRegionals] = React.useState<string[]>([]);
@@ -69,7 +69,7 @@ function App() {
     window.location.reload();
   };
   
-  
+ 
 
   const filterData = React.useCallback(() => {
     let newFilteredData = jsonData;
@@ -170,7 +170,7 @@ function App() {
     selectedParceiros
   ]);
 
-  React.useEffect(() => {
+  useEffect => {
     filterData();
   }, [
     filterData, 
