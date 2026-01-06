@@ -46,21 +46,21 @@ interface JsonDataItem {
 }
 
 function App() {
-  const [switchMode, setSwitchMode] = useState<string>('false')
+  
   const [filteredData, setFilteredData] = useState<JsonDataItem[]>([]);
-  const [selectedYears, setSelectedYears] = React.useState<string[]>([]);
-  const [selectedRegionals, setSelectedRegionals] = React.useState<string[]>([]);
-  const [selectedMunicipios, setSelectedMunicipios] = React.useState<string[]>([]);
-  const [selectedProtectedAreas, setSelectedProtectedAreas] = React.useState<string[]>([]);
-  const [selectedPrograma, setSelectedPrograma] = React.useState<string>('TODOS');
-  const [selectedPlantio, setSelectedPlantio] = React.useState<string>('TODOS');
-  const [selectedMonitoramento, setSelectedMonitoramento] = React.useState<string>('TODOS');
-  const [selectedIndicadores, setSelectedIndicadores] = React.useState<string>('TODOS');
-  const [selectedConformidade, setSelectedConformidade] = React.useState<string>('TODOS');
-  const [percentageRange, setPercentageRange] = React.useState<number[]>([0, 100]);
-  const [modulesRange, setModulesRange] = React.useState<number[]>([0, 5000]);
-  const [selectedParceiros, setSelectedParceiros] = React.useState<string[]>([]);
-  const [searchTerm, setSearchTerm] = React.useState<string>('');
+  const [selectedYears, setSelectedYears] = useState<string[]>([]);
+  const [selectedRegionals, setSelectedRegionals] = useState<string[]>([]);
+  const [selectedMunicipios, setSelectedMunicipios] = useState<string[]>([]);
+  const [selectedProtectedAreas, setSelectedProtectedAreas] = useState<string[]>([]);
+  const [selectedPrograma, setSelectedPrograma] = useState<string>('TODOS');
+  const [selectedPlantio, setSelectedPlantio] = useState<string>('TODOS');
+  const [selectedMonitoramento, setSelectedMonitoramento] = useState<string>('TODOS');
+  const [selectedIndicadores, setSelectedIndicadores] = useState<string>('TODOS');
+  const [selectedConformidade, setSelectedConformidade] = useState<string>('TODOS');
+  const [percentageRange, setPercentageRange] = useState<number[]>([0, 100]);
+  const [modulesRange, setModulesRange] = useState<number[]>([0, 5000]);
+  const [selectedParceiros, setSelectedParceiros] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleClearFilters = () => {
     window.location.reload();
