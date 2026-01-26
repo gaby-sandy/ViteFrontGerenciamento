@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdInfoOutline } from "react-icons/md";
 import styles from './Ano.module.css'; 
+import { useState } from 'react';
+import { SyntheticEvent } from 'react';
 
 // Adicionar a fonte Open Sans
 const openSansFontLink = document.createElement('link');
@@ -11,20 +13,18 @@ openSansFontLink.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght
 openSansFontLink.rel = 'stylesheet';
 document.head.appendChild(openSansFontLink);
 
-// Tipo de dado para os objetos da lista de anos
 interface YearOption {
   title: string;
 }
 
-// Propriedades do componente
 interface AnoProps {
   onYearChange: (years: string[]) => void;
 }
 
 export default function Ano({ onYearChange }: AnoProps) {
-  const [value, setValue] = React.useState<YearOption[]>([Anos[0]]); 
+  const [value, setValue] = useState<YearOption[]>([Anos[0]]); 
 
-  const handleChange = (event: React.SyntheticEvent, newValue: YearOption[]) => {
+  const handleChange = (event: SyntheticEvent, newValue: YearOption[]) => {
     setValue(newValue);
     onYearChange(newValue.map(option => option.title));
   };
