@@ -1,10 +1,10 @@
 // Municipio.js
-import * as React from 'react';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdInfoOutline } from "react-icons/md";
 import styles from './Municipio.module.css';
+import { useState, useEffect } from 'react';
 
 interface MunicipioOption {
   title: string;
@@ -14,11 +14,11 @@ interface MunicipioProps {
   onMunicipioChange: (selectedMunicipios: string[]) => void;
 }
 
-const Municipio: React.FC<MunicipioProps> = ({ onMunicipioChange }) => {
-  const [value, setValue] = React.useState<MunicipioOption[]>([]);
-  const [municipios, setMunicipios] = React.useState<MunicipioOption[]>([]);
+const Municipio :<MunicipioProps> = ({ onMunicipioChange }) => {
+  const [value, setValue] = useState<MunicipioOption[]>([]);
+  const [municipios, setMunicipios] = useState<MunicipioOption[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchMunicipios = async () => {
       try {
         const response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios');

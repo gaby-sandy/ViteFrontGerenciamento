@@ -1,35 +1,35 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
 import { MdInfoOutline } from "react-icons/md"; 
-import styles from './Area.module.css'; 
+import styles from './Area.module.css';
+import { useState } from 'react'; 
 
 interface RangeSliderProps {
   onChange: (value: number[]) => void;
 }
 
 export default function RangeSlider({ onChange }: RangeSliderProps) {
-  const [value, setValue] = React.useState<number[]>([20, 80]);
+  const [value, setValue] = useState<number[]>([20, 80]);
 
   const handleSliderChange = (event: Event, newValue: number | number[]) => {
-    const newValueArray = newValue as number[]; // Garantir que newValue seja um array de números
-    setValue(newValueArray);
-    onChange(newValueArray); 
+    const newValueArray = newValue as number[]; 
+      setValue(newValueArray);
+      onChange(newValueArray); 
   };
 
   const handleInputChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = [...value];
-    newValue[index] = event.target.value === '' ? 0 : Number(event.target.value); // Tratamento de string vazia para 0
-    setValue(newValue);
-    onChange(newValue); 
+      newValue[index] = event.target.value === '' ? 0 : Number(event.target.value); 
+      setValue(newValue);
+      onChange(newValue); 
   };
 
   const handleBlur = () => {
     if (value[0] < 0) {
       setValue([0, value[1]]);
     } else if (value[1] > 100) {
-      setValue([value[0], 100]);
+        setValue([value[0], 100]);
     }
   };
 

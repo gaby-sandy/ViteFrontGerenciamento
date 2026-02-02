@@ -1,28 +1,24 @@
-import * as React from 'react';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdInfoOutline } from "react-icons/md";
-import styles from './Areas.module.css'; 
+import styles from './Areas.module.css';
+import { useState } from 'react';
 
-// Definindo o tipo para as opções de áreas protegidas
 interface ProtectedArea {
   title: string;
 }
 
-// Definindo o tipo para as props do componente
 interface FixedTagsProps {
   onProtectedAreaChange: (selectedAreas: string[]) => void;
 }
 
 export default function FixedTags({ onProtectedAreaChange }: FixedTagsProps) {
-  // Tipando o estado com o tipo ProtectedArea[]
-  const [value, setValue] = React.useState<ProtectedArea[]>([protectedAreas[0]]);
+  const [value, setValue] = useState<ProtectedArea[]>([protectedAreas[0]]);
 
-  // Tipando o evento e o newValue
   const handleChange = (event: React.SyntheticEvent, newValue: ProtectedArea[]) => {
     setValue(newValue);
-    onProtectedAreaChange(newValue.map(option => option.title)); // Passa as áreas selecionadas ao App.tsx
+    onProtectedAreaChange(newValue.map(option => option.title));
   };
 
   return (
@@ -57,7 +53,6 @@ export default function FixedTags({ onProtectedAreaChange }: FixedTagsProps) {
   );
 }
 
-// Lista de opções com tipagem explícita
 const protectedAreas: ProtectedArea[] = [
   { title: 'Todos' },
   { title: 'Área de Preservação Permanente (APP)' },

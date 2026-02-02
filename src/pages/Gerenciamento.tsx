@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { MdFilterAlt } from "react-icons/md";
-import Navbar from "../components/Navbar/Navbar";
 import Boxmonitoramento from '../components/Monitoramento/Monitoramento';
 import Ano from '../components/Ano/Ano';
 import Regional from '../components/Regional/Regional';
