@@ -25,7 +25,7 @@ describe(Ano,()=>{
         const option2023= await screen.findByText('2023');
         fireEvent.click(option2023);
         expect(AnoProps).toHaveBeenCalledWith(
-            expect.arrayContaining(['2023']);
+            expect.arrayContaining(['2023'])
         )
     });
 });
