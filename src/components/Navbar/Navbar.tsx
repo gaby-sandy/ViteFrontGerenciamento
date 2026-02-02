@@ -41,7 +41,8 @@ const Navbar  = () => {
       <nav className={`${styles.sidebar} ${isMenuOpen ? styles.open : ''}`} >
         <ul>
         <li><NavLink to="/home" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Home</NavLink> </li>
-          <li><NavLink to="/implementacao" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Implementação</NavLink></li>
+        <li><NavLink to="/" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Gerenciamento</NavLink> </li>
+        <li><NavLink to="/implementacao" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Implementação</NavLink></li>
           
         </ul>
       </nav>

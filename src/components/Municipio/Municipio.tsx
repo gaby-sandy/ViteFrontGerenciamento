@@ -5,16 +5,15 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { MdInfoOutline } from "react-icons/md";
 import styles from './Municipio.module.css';
 import { useState, useEffect } from 'react';
-
-interface MunicipioOption {
+type MunicipioOption ={
   title: string;
 }
 
-interface MunicipioProps {
+type MunicipioProps = {
   onMunicipioChange: (selectedMunicipios: string[]) => void;
 }
 
-const Municipio :<MunicipioProps> = ({ onMunicipioChange }) => {
+const Municipio=({ onMunicipioChange }:MunicipioProps) => {
   const [value, setValue] = useState<MunicipioOption[]>([]);
   const [municipios, setMunicipios] = useState<MunicipioOption[]>([]);
 
@@ -38,7 +37,7 @@ const Municipio :<MunicipioProps> = ({ onMunicipioChange }) => {
 
   const handleChange = (_event: React.SyntheticEvent, newValue: MunicipioOption[]) => {
     setValue(newValue);
-    onMunicipioChange(newValue.map(option => option.title)); // Atualiza o pai com os títulos dos municípios selecionados
+    onMunicipioChange(newValue.map((option) => option.title)); 
   };
 
   return (
