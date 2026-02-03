@@ -3,7 +3,8 @@ import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { MdInfoOutline } from "react-icons/md";
-import styles from './Regional.module.css'; 
+import styles from './Regional.module.css';
+import { useState } from 'react'; 
 
 // Tipagem para as opções de Regional
 interface RegionalOption {
@@ -28,7 +29,7 @@ interface RegionalProps {
 
 export default function Regional({ onRegionalChange }: RegionalProps) {
   // Tipagem para o estado
-  const [value, setValue] = React.useState<RegionalOption[]>([RegionalOptions[0]]);
+  const [value, setValue] = useState<RegionalOption[]>([RegionalOptions[0]]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: RegionalOption[]) => {
     setValue(newValue);
