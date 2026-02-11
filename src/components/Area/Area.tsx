@@ -3,7 +3,8 @@ import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
 import { MdInfoOutline } from "react-icons/md"; 
 import styles from './Area.module.css';
-import { useState } from 'react'; 
+import { useState } from 'react';
+import { StyledContainer, InfoIcon, SliderLabel } from './Area.styles'; 
 
 interface RangeSliderProps {
   onChange: (value: number[]) => void;
@@ -34,12 +35,14 @@ export default function RangeSlider({ onChange }: RangeSliderProps) {
   };
 
   return (
-    <div className={styles.container}> 
+    <StyledContainer>
       <Box sx={{ width: 400 }}>
-        <div className={styles.sliderLabel}>
+        <SliderLabel>
           <span>Área (ha)</span>
+          <InfoIcon>
           <MdInfoOutline className={styles.infoIcon} />
-        </div>
+          </InfoIcon>
+        </SliderLabel>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <TextField
             value={value[0]}
@@ -90,6 +93,6 @@ export default function RangeSlider({ onChange }: RangeSliderProps) {
           />
         </Box>
       </Box>
-    </div>
+    </StyledContainer> 
   );
 }
